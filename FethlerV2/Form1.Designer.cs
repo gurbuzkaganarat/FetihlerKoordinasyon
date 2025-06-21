@@ -54,20 +54,21 @@
             this.btnGorevliTanim = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTanımlar = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblformAdi = new System.Windows.Forms.Label();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.centerPanel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl3 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl4 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.anaMenuPanel.SuspendLayout();
             this.panelListelerSubMenu.SuspendLayout();
             this.panelRaporlarSubMenu.SuspendLayout();
@@ -109,9 +110,9 @@
             this.panelListelerSubMenu.Controls.Add(this.btnDagitimListesi);
             this.panelListelerSubMenu.Controls.Add(this.btnParaTutanak);
             this.panelListelerSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelListelerSubMenu.Location = new System.Drawing.Point(0, 659);
+            this.panelListelerSubMenu.Location = new System.Drawing.Point(0, 670);
             this.panelListelerSubMenu.Name = "panelListelerSubMenu";
-            this.panelListelerSubMenu.Size = new System.Drawing.Size(214, 126);
+            this.panelListelerSubMenu.Size = new System.Drawing.Size(197, 132);
             this.panelListelerSubMenu.TabIndex = 8;
             // 
             // btnKisiListesi
@@ -141,10 +142,10 @@
             this.btnKisiListesi.Margin = new System.Windows.Forms.Padding(0);
             this.btnKisiListesi.Name = "btnKisiListesi";
             this.btnKisiListesi.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnKisiListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnKisiListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnKisiListesi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnKisiListesi.selected = false;
-            this.btnKisiListesi.Size = new System.Drawing.Size(214, 40);
+            this.btnKisiListesi.Size = new System.Drawing.Size(197, 40);
             this.btnKisiListesi.TabIndex = 6;
             this.btnKisiListesi.Text = "  Kisi Listesi";
             this.btnKisiListesi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -179,10 +180,10 @@
             this.btnDagitimListesi.Margin = new System.Windows.Forms.Padding(0);
             this.btnDagitimListesi.Name = "btnDagitimListesi";
             this.btnDagitimListesi.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnDagitimListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnDagitimListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnDagitimListesi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnDagitimListesi.selected = false;
-            this.btnDagitimListesi.Size = new System.Drawing.Size(214, 40);
+            this.btnDagitimListesi.Size = new System.Drawing.Size(197, 40);
             this.btnDagitimListesi.TabIndex = 5;
             this.btnDagitimListesi.Text = "  Dağıtım Listesi";
             this.btnDagitimListesi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -217,10 +218,10 @@
             this.btnParaTutanak.Margin = new System.Windows.Forms.Padding(0);
             this.btnParaTutanak.Name = "btnParaTutanak";
             this.btnParaTutanak.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnParaTutanak.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnParaTutanak.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnParaTutanak.OnHoverTextColor = System.Drawing.Color.White;
             this.btnParaTutanak.selected = false;
-            this.btnParaTutanak.Size = new System.Drawing.Size(214, 40);
+            this.btnParaTutanak.Size = new System.Drawing.Size(197, 40);
             this.btnParaTutanak.TabIndex = 4;
             this.btnParaTutanak.Text = "  Para Tutanağı";
             this.btnParaTutanak.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -234,7 +235,7 @@
             this.btnRaporlar.BackColor = System.Drawing.Color.Transparent;
             this.btnRaporlar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRaporlar.BorderRadius = 0;
-            this.btnRaporlar.ButtonText = "  Raporlar";
+            this.btnRaporlar.ButtonText = "          Raporlar";
             this.btnRaporlar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRaporlar.DisabledColor = System.Drawing.Color.Gray;
             this.btnRaporlar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -251,7 +252,7 @@
             this.btnRaporlar.IconVisible = true;
             this.btnRaporlar.IconZoom = 90D;
             this.btnRaporlar.IsTab = false;
-            this.btnRaporlar.Location = new System.Drawing.Point(0, 614);
+            this.btnRaporlar.Location = new System.Drawing.Point(0, 625);
             this.btnRaporlar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnRaporlar.Name = "btnRaporlar";
             this.btnRaporlar.Normalcolor = System.Drawing.Color.Transparent;
@@ -259,9 +260,9 @@
             this.btnRaporlar.OnHoverTextColor = System.Drawing.Color.White;
             this.btnRaporlar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnRaporlar.selected = false;
-            this.btnRaporlar.Size = new System.Drawing.Size(214, 45);
+            this.btnRaporlar.Size = new System.Drawing.Size(197, 45);
             this.btnRaporlar.TabIndex = 7;
-            this.btnRaporlar.Text = "  Raporlar";
+            this.btnRaporlar.Text = "          Raporlar";
             this.btnRaporlar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRaporlar.Textcolor = System.Drawing.Color.White;
             this.btnRaporlar.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -277,7 +278,7 @@
             this.panelRaporlarSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelRaporlarSubMenu.Location = new System.Drawing.Point(0, 450);
             this.panelRaporlarSubMenu.Name = "panelRaporlarSubMenu";
-            this.panelRaporlarSubMenu.Size = new System.Drawing.Size(214, 164);
+            this.panelRaporlarSubMenu.Size = new System.Drawing.Size(197, 175);
             this.panelRaporlarSubMenu.TabIndex = 6;
             // 
             // btnSeferListesi
@@ -307,16 +308,16 @@
             this.btnSeferListesi.Margin = new System.Windows.Forms.Padding(0);
             this.btnSeferListesi.Name = "btnSeferListesi";
             this.btnSeferListesi.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnSeferListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnSeferListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnSeferListesi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnSeferListesi.selected = false;
-            this.btnSeferListesi.Size = new System.Drawing.Size(214, 40);
-            this.btnSeferListesi.TabIndex = 8;
+            this.btnSeferListesi.Size = new System.Drawing.Size(197, 40);
+            this.btnSeferListesi.TabIndex = 10;
             this.btnSeferListesi.Text = "  Sefer Listesi";
             this.btnSeferListesi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSeferListesi.Textcolor = System.Drawing.Color.White;
             this.btnSeferListesi.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSeferListesi.Click += new System.EventHandler(this.btnSeferListesi_Click);
+            this.btnSeferListesi.Click += new System.EventHandler(this.btnSeferListesi_Click_1);
             // 
             // btnGorevliListesi
             // 
@@ -345,10 +346,10 @@
             this.btnGorevliListesi.Margin = new System.Windows.Forms.Padding(0);
             this.btnGorevliListesi.Name = "btnGorevliListesi";
             this.btnGorevliListesi.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnGorevliListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnGorevliListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnGorevliListesi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnGorevliListesi.selected = false;
-            this.btnGorevliListesi.Size = new System.Drawing.Size(214, 40);
+            this.btnGorevliListesi.Size = new System.Drawing.Size(197, 40);
             this.btnGorevliListesi.TabIndex = 6;
             this.btnGorevliListesi.Text = "  Görevli Listesi";
             this.btnGorevliListesi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -383,10 +384,10 @@
             this.btnAracListesi.Margin = new System.Windows.Forms.Padding(0);
             this.btnAracListesi.Name = "btnAracListesi";
             this.btnAracListesi.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnAracListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnAracListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnAracListesi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAracListesi.selected = false;
-            this.btnAracListesi.Size = new System.Drawing.Size(214, 40);
+            this.btnAracListesi.Size = new System.Drawing.Size(197, 40);
             this.btnAracListesi.TabIndex = 5;
             this.btnAracListesi.Text = "  Araç Listesi";
             this.btnAracListesi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -400,7 +401,7 @@
             this.btnKoyListesi.BackColor = System.Drawing.Color.Transparent;
             this.btnKoyListesi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnKoyListesi.BorderRadius = 0;
-            this.btnKoyListesi.ButtonText = " Köy Listesi";
+            this.btnKoyListesi.ButtonText = "Dağıtım Yapılacak Köyler";
             this.btnKoyListesi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKoyListesi.DisabledColor = System.Drawing.Color.Gray;
             this.btnKoyListesi.Dock = System.Windows.Forms.DockStyle.Top;
@@ -421,12 +422,12 @@
             this.btnKoyListesi.Margin = new System.Windows.Forms.Padding(0);
             this.btnKoyListesi.Name = "btnKoyListesi";
             this.btnKoyListesi.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnKoyListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnKoyListesi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnKoyListesi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnKoyListesi.selected = false;
-            this.btnKoyListesi.Size = new System.Drawing.Size(214, 40);
+            this.btnKoyListesi.Size = new System.Drawing.Size(197, 40);
             this.btnKoyListesi.TabIndex = 4;
-            this.btnKoyListesi.Text = " Köy Listesi";
+            this.btnKoyListesi.Text = "Dağıtım Yapılacak Köyler";
             this.btnKoyListesi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKoyListesi.Textcolor = System.Drawing.Color.White;
             this.btnKoyListesi.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -438,7 +439,7 @@
             this.btnListeler.BackColor = System.Drawing.Color.Transparent;
             this.btnListeler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnListeler.BorderRadius = 0;
-            this.btnListeler.ButtonText = "  Listeler";
+            this.btnListeler.ButtonText = "          Listeler";
             this.btnListeler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListeler.DisabledColor = System.Drawing.Color.Gray;
             this.btnListeler.Dock = System.Windows.Forms.DockStyle.Top;
@@ -463,9 +464,9 @@
             this.btnListeler.OnHoverTextColor = System.Drawing.Color.White;
             this.btnListeler.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnListeler.selected = false;
-            this.btnListeler.Size = new System.Drawing.Size(214, 45);
+            this.btnListeler.Size = new System.Drawing.Size(197, 45);
             this.btnListeler.TabIndex = 5;
-            this.btnListeler.Text = "  Listeler";
+            this.btnListeler.Text = "          Listeler";
             this.btnListeler.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListeler.Textcolor = System.Drawing.Color.White;
             this.btnListeler.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -486,7 +487,7 @@
             this.panelTanımlarSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTanımlarSubMenu.Location = new System.Drawing.Point(0, 45);
             this.panelTanımlarSubMenu.Name = "panelTanımlarSubMenu";
-            this.panelTanımlarSubMenu.Size = new System.Drawing.Size(214, 360);
+            this.panelTanımlarSubMenu.Size = new System.Drawing.Size(197, 360);
             this.panelTanımlarSubMenu.TabIndex = 4;
             // 
             // btnKisiTanim
@@ -495,7 +496,7 @@
             this.btnKisiTanim.BackColor = System.Drawing.Color.Transparent;
             this.btnKisiTanim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnKisiTanim.BorderRadius = 0;
-            this.btnKisiTanim.ButtonText = "  Kisi Tanim";
+            this.btnKisiTanim.ButtonText = "  Kisi Tanım";
             this.btnKisiTanim.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKisiTanim.DisabledColor = System.Drawing.Color.Gray;
             this.btnKisiTanim.Dock = System.Windows.Forms.DockStyle.Top;
@@ -516,12 +517,12 @@
             this.btnKisiTanim.Margin = new System.Windows.Forms.Padding(0);
             this.btnKisiTanim.Name = "btnKisiTanim";
             this.btnKisiTanim.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnKisiTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnKisiTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnKisiTanim.OnHoverTextColor = System.Drawing.Color.White;
             this.btnKisiTanim.selected = false;
-            this.btnKisiTanim.Size = new System.Drawing.Size(214, 40);
+            this.btnKisiTanim.Size = new System.Drawing.Size(197, 40);
             this.btnKisiTanim.TabIndex = 9;
-            this.btnKisiTanim.Text = "  Kisi Tanim";
+            this.btnKisiTanim.Text = "  Kisi Tanım";
             this.btnKisiTanim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnKisiTanim.Textcolor = System.Drawing.Color.White;
             this.btnKisiTanim.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -554,10 +555,10 @@
             this.btnDonemTanim.Margin = new System.Windows.Forms.Padding(0);
             this.btnDonemTanim.Name = "btnDonemTanim";
             this.btnDonemTanim.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnDonemTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnDonemTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnDonemTanim.OnHoverTextColor = System.Drawing.Color.White;
             this.btnDonemTanim.selected = false;
-            this.btnDonemTanim.Size = new System.Drawing.Size(214, 40);
+            this.btnDonemTanim.Size = new System.Drawing.Size(197, 40);
             this.btnDonemTanim.TabIndex = 8;
             this.btnDonemTanim.Text = "  Dönem Tanım";
             this.btnDonemTanim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -592,10 +593,10 @@
             this.btnAracTanim.Margin = new System.Windows.Forms.Padding(0);
             this.btnAracTanim.Name = "btnAracTanim";
             this.btnAracTanim.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnAracTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnAracTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnAracTanim.OnHoverTextColor = System.Drawing.Color.White;
             this.btnAracTanim.selected = false;
-            this.btnAracTanim.Size = new System.Drawing.Size(214, 40);
+            this.btnAracTanim.Size = new System.Drawing.Size(197, 40);
             this.btnAracTanim.TabIndex = 7;
             this.btnAracTanim.Text = "  Araç Tanım";
             this.btnAracTanim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -630,10 +631,10 @@
             this.btnMaas.Margin = new System.Windows.Forms.Padding(0);
             this.btnMaas.Name = "btnMaas";
             this.btnMaas.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnMaas.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnMaas.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnMaas.OnHoverTextColor = System.Drawing.Color.White;
             this.btnMaas.selected = false;
-            this.btnMaas.Size = new System.Drawing.Size(214, 40);
+            this.btnMaas.Size = new System.Drawing.Size(197, 40);
             this.btnMaas.TabIndex = 6;
             this.btnMaas.Text = "  Maaş Tanım";
             this.btnMaas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -668,10 +669,10 @@
             this.btnKategori.Margin = new System.Windows.Forms.Padding(0);
             this.btnKategori.Name = "btnKategori";
             this.btnKategori.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnKategori.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnKategori.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnKategori.OnHoverTextColor = System.Drawing.Color.White;
             this.btnKategori.selected = false;
-            this.btnKategori.Size = new System.Drawing.Size(214, 40);
+            this.btnKategori.Size = new System.Drawing.Size(197, 40);
             this.btnKategori.TabIndex = 5;
             this.btnKategori.Text = "  Kategori Tanım";
             this.btnKategori.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -706,10 +707,10 @@
             this.btnHastalik.Margin = new System.Windows.Forms.Padding(0);
             this.btnHastalik.Name = "btnHastalik";
             this.btnHastalik.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnHastalik.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnHastalik.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnHastalik.OnHoverTextColor = System.Drawing.Color.White;
             this.btnHastalik.selected = false;
-            this.btnHastalik.Size = new System.Drawing.Size(214, 40);
+            this.btnHastalik.Size = new System.Drawing.Size(197, 40);
             this.btnHastalik.TabIndex = 4;
             this.btnHastalik.Text = "  Hastalık Tanım";
             this.btnHastalik.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -744,10 +745,10 @@
             this.btnKoyTanim.Margin = new System.Windows.Forms.Padding(0);
             this.btnKoyTanim.Name = "btnKoyTanim";
             this.btnKoyTanim.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnKoyTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnKoyTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnKoyTanim.OnHoverTextColor = System.Drawing.Color.White;
             this.btnKoyTanim.selected = false;
-            this.btnKoyTanim.Size = new System.Drawing.Size(214, 40);
+            this.btnKoyTanim.Size = new System.Drawing.Size(197, 40);
             this.btnKoyTanim.TabIndex = 3;
             this.btnKoyTanim.Text = "  Köy Tanım";
             this.btnKoyTanim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -782,10 +783,10 @@
             this.btnBolgeTanim.Margin = new System.Windows.Forms.Padding(0);
             this.btnBolgeTanim.Name = "btnBolgeTanim";
             this.btnBolgeTanim.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnBolgeTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnBolgeTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnBolgeTanim.OnHoverTextColor = System.Drawing.Color.White;
             this.btnBolgeTanim.selected = false;
-            this.btnBolgeTanim.Size = new System.Drawing.Size(214, 40);
+            this.btnBolgeTanim.Size = new System.Drawing.Size(197, 40);
             this.btnBolgeTanim.TabIndex = 2;
             this.btnBolgeTanim.Text = "  Bölge Tanım";
             this.btnBolgeTanim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -795,7 +796,7 @@
             // 
             // btnGorevliTanim
             // 
-            this.btnGorevliTanim.Activecolor = System.Drawing.Color.Transparent;
+            this.btnGorevliTanim.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
             this.btnGorevliTanim.BackColor = System.Drawing.Color.Transparent;
             this.btnGorevliTanim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGorevliTanim.BorderRadius = 0;
@@ -820,10 +821,10 @@
             this.btnGorevliTanim.Margin = new System.Windows.Forms.Padding(0);
             this.btnGorevliTanim.Name = "btnGorevliTanim";
             this.btnGorevliTanim.Normalcolor = System.Drawing.Color.Transparent;
-            this.btnGorevliTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+            this.btnGorevliTanim.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(63)))), ((int)(((byte)(79)))));
             this.btnGorevliTanim.OnHoverTextColor = System.Drawing.Color.White;
             this.btnGorevliTanim.selected = false;
-            this.btnGorevliTanim.Size = new System.Drawing.Size(214, 40);
+            this.btnGorevliTanim.Size = new System.Drawing.Size(197, 40);
             this.btnGorevliTanim.TabIndex = 1;
             this.btnGorevliTanim.Text = "  Görevli Tanım";
             this.btnGorevliTanim.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -837,7 +838,7 @@
             this.btnTanımlar.BackColor = System.Drawing.Color.Transparent;
             this.btnTanımlar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTanımlar.BorderRadius = 0;
-            this.btnTanımlar.ButtonText = "  Tanımlar";
+            this.btnTanımlar.ButtonText = "          Tanımlar";
             this.btnTanımlar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTanımlar.DisabledColor = System.Drawing.Color.Gray;
             this.btnTanımlar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -862,9 +863,9 @@
             this.btnTanımlar.OnHoverTextColor = System.Drawing.Color.White;
             this.btnTanımlar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTanımlar.selected = false;
-            this.btnTanımlar.Size = new System.Drawing.Size(214, 45);
+            this.btnTanımlar.Size = new System.Drawing.Size(197, 45);
             this.btnTanımlar.TabIndex = 3;
-            this.btnTanımlar.Text = "  Tanımlar";
+            this.btnTanımlar.Text = "          Tanımlar";
             this.btnTanımlar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTanımlar.Textcolor = System.Drawing.Color.White;
             this.btnTanımlar.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -875,6 +876,7 @@
             this.bunifuGradientPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
             this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.guna2ImageButton2);
             this.bunifuGradientPanel2.Controls.Add(this.lblformAdi);
             this.bunifuGradientPanel2.Controls.Add(this.guna2ImageButton1);
             this.bunifuGradientPanel2.Controls.Add(this.label1);
@@ -890,6 +892,21 @@
             this.bunifuGradientPanel2.Quality = 10;
             this.bunifuGradientPanel2.Size = new System.Drawing.Size(1572, 47);
             this.bunifuGradientPanel2.TabIndex = 1;
+            // 
+            // guna2ImageButton2
+            // 
+            this.guna2ImageButton2.CheckedState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.guna2ImageButton2.HoverState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton2.Image")));
+            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(50, 50);
+            this.guna2ImageButton2.Location = new System.Drawing.Point(1491, 1);
+            this.guna2ImageButton2.Name = "guna2ImageButton2";
+            this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.guna2ImageButton2.PressedState.Parent = this.guna2ImageButton2;
+            this.guna2ImageButton2.Size = new System.Drawing.Size(22, 47);
+            this.guna2ImageButton2.TabIndex = 5;
+            this.guna2ImageButton2.Click += new System.EventHandler(this.guna2ImageButton2_Click);
             // 
             // lblformAdi
             // 
@@ -954,6 +971,49 @@
             this.centerPanel.Size = new System.Drawing.Size(1358, 797);
             this.centerPanel.TabIndex = 3;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Constantia", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(421, 411);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(448, 58);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "YARDIM KOORDİNASYON PROGRAMI\r\n\r\n";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Constantia", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(413, 368);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(464, 42);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "HAYIR HİZMETLERİ VAKFI";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Constantia", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(551, 325);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(189, 42);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "FETİHLER";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(440, 85);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(410, 239);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.TargetControl = this.bunifuGradientPanel2;
@@ -969,49 +1029,6 @@
             // guna2DragControl4
             // 
             this.guna2DragControl4.TargetControl = this.anaMenuPanel;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(440, 85);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(410, 239);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Constantia", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(551, 325);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 42);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "FETİHLER";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Constantia", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(413, 368);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(464, 42);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "HAYIR HİZMETLERİ VAKFI";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Constantia", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(421, 411);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(448, 58);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "YARDIM KOORDİNASYON PROGRAMI\r\n\r\n";
             // 
             // Form1
             // 
@@ -1076,12 +1093,13 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl3;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl4;
-        public Bunifu.Framework.UI.BunifuFlatButton btnSeferListesi;
         private System.Windows.Forms.Label lblformAdi;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
+        public Bunifu.Framework.UI.BunifuFlatButton btnSeferListesi;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
     }
 }
 

@@ -37,6 +37,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtAra = new Guna.UI.WinForms.GunaTextBox();
+            this.guna2ShadowPanel3 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.rdoBilgiIslem = new Guna.UI.WinForms.GunaRadioButton();
+            this.isIt = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.dene = new System.Windows.Forms.Label();
             this.btnTemizle = new Guna.UI.WinForms.GunaAdvenceButton();
             this.bunifuCustomDataGrid1 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.btnSil = new Guna.UI.WinForms.GunaAdvenceButton();
@@ -54,8 +60,9 @@
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.dene = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.guna2ShadowPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).BeginInit();
             this.guna2ShadowPanel2.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -69,6 +76,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.guna2ShadowPanel3);
+            this.panel1.Controls.Add(this.isIt);
             this.panel1.Controls.Add(this.dene);
             this.panel1.Controls.Add(this.btnTemizle);
             this.panel1.Controls.Add(this.bunifuCustomDataGrid1);
@@ -87,8 +97,89 @@
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Location = new System.Drawing.Point(263, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(686, 528);
+            this.panel1.Size = new System.Drawing.Size(686, 571);
             this.panel1.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtAra);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(361, 176);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(298, 70);
+            this.groupBox1.TabIndex = 97;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ara";
+            // 
+            // txtAra
+            // 
+            this.txtAra.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.txtAra.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.txtAra.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtAra.FocusedBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+            this.txtAra.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
+            this.txtAra.FocusedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
+            this.txtAra.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtAra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
+            this.txtAra.Location = new System.Drawing.Point(14, 25);
+            this.txtAra.Name = "txtAra";
+            this.txtAra.PasswordChar = '\0';
+            this.txtAra.SelectedText = "";
+            this.txtAra.Size = new System.Drawing.Size(278, 35);
+            this.txtAra.TabIndex = 104;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
+            // 
+            // guna2ShadowPanel3
+            // 
+            this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel3.Controls.Add(this.rdoBilgiIslem);
+            this.guna2ShadowPanel3.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(30, 200);
+            this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
+            this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(103, 36);
+            this.guna2ShadowPanel3.TabIndex = 103;
+            // 
+            // rdoBilgiIslem
+            // 
+            this.rdoBilgiIslem.BackColor = System.Drawing.Color.Transparent;
+            this.rdoBilgiIslem.BaseColor = System.Drawing.Color.Transparent;
+            this.rdoBilgiIslem.CheckedOffColor = System.Drawing.Color.White;
+            this.rdoBilgiIslem.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            this.rdoBilgiIslem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
+            this.rdoBilgiIslem.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rdoBilgiIslem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
+            this.rdoBilgiIslem.Location = new System.Drawing.Point(8, 7);
+            this.rdoBilgiIslem.Name = "rdoBilgiIslem";
+            this.rdoBilgiIslem.Size = new System.Drawing.Size(66, 23);
+            this.rdoBilgiIslem.TabIndex = 56;
+            this.rdoBilgiIslem.TabStop = false;
+            this.rdoBilgiIslem.Text = "Evet";
+            this.rdoBilgiIslem.Click += new System.EventHandler(this.rdoBilgiIslem_Click);
+            // 
+            // isIt
+            // 
+            this.isIt.AutoSize = true;
+            this.isIt.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.isIt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
+            this.isIt.Location = new System.Drawing.Point(26, 176);
+            this.isIt.Name = "isIt";
+            this.isIt.Size = new System.Drawing.Size(82, 21);
+            this.isIt.TabIndex = 102;
+            this.isIt.Text = "Bilgi İslem";
+            // 
+            // dene
+            // 
+            this.dene.AutoSize = true;
+            this.dene.Location = new System.Drawing.Point(625, 17);
+            this.dene.Name = "dene";
+            this.dene.Size = new System.Drawing.Size(45, 17);
+            this.dene.TabIndex = 101;
+            this.dene.Text = "label1";
+            this.dene.Visible = false;
+            this.dene.Click += new System.EventHandler(this.dene_Click);
             // 
             // btnTemizle
             // 
@@ -108,7 +199,7 @@
             this.btnTemizle.Image = ((System.Drawing.Image)(resources.GetObject("btnTemizle.Image")));
             this.btnTemizle.ImageSize = new System.Drawing.Size(35, 35);
             this.btnTemizle.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnTemizle.Location = new System.Drawing.Point(517, 190);
+            this.btnTemizle.Location = new System.Drawing.Point(517, 265);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.btnTemizle.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -125,9 +216,9 @@
             // bunifuCustomDataGrid1
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
             this.bunifuCustomDataGrid1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.bunifuCustomDataGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(55)))));
@@ -135,18 +226,18 @@
             this.bunifuCustomDataGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.bunifuCustomDataGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.bunifuCustomDataGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.bunifuCustomDataGrid1.DefaultCellStyle = dataGridViewCellStyle3;
@@ -154,27 +245,31 @@
             this.bunifuCustomDataGrid1.EnableHeadersVisualStyles = false;
             this.bunifuCustomDataGrid1.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(70)))));
             this.bunifuCustomDataGrid1.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
-            this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(29, 282);
+            this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(30, 331);
             this.bunifuCustomDataGrid1.Name = "bunifuCustomDataGrid1";
             this.bunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.bunifuCustomDataGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(110)))), ((int)(((byte)(49)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(239)))), ((int)(((byte)(231)))));
             this.bunifuCustomDataGrid1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.bunifuCustomDataGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(630, 216);
             this.bunifuCustomDataGrid1.TabIndex = 100;
             this.bunifuCustomDataGrid1.TabStop = false;
             this.bunifuCustomDataGrid1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bunifuCustomDataGrid1_CellMouseClick);
+            this.bunifuCustomDataGrid1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellMouseLeave);
+            this.bunifuCustomDataGrid1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bunifuCustomDataGrid1_CellMouseMove);
+            this.bunifuCustomDataGrid1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.bunifuCustomDataGrid1_DataBindingComplete);
             // 
             // btnSil
             // 
@@ -194,7 +289,7 @@
             this.btnSil.Image = ((System.Drawing.Image)(resources.GetObject("btnSil.Image")));
             this.btnSil.ImageSize = new System.Drawing.Size(35, 35);
             this.btnSil.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnSil.Location = new System.Drawing.Point(187, 190);
+            this.btnSil.Location = new System.Drawing.Point(187, 265);
             this.btnSil.Name = "btnSil";
             this.btnSil.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.btnSil.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -226,7 +321,7 @@
             this.btnGuncelle.Image = ((System.Drawing.Image)(resources.GetObject("btnGuncelle.Image")));
             this.btnGuncelle.ImageSize = new System.Drawing.Size(35, 35);
             this.btnGuncelle.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnGuncelle.Location = new System.Drawing.Point(357, 190);
+            this.btnGuncelle.Location = new System.Drawing.Point(357, 265);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.btnGuncelle.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -258,7 +353,7 @@
             this.btnKaydet.Image = ((System.Drawing.Image)(resources.GetObject("btnKaydet.Image")));
             this.btnKaydet.ImageSize = new System.Drawing.Size(35, 35);
             this.btnKaydet.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.btnKaydet.Location = new System.Drawing.Point(29, 190);
+            this.btnKaydet.Location = new System.Drawing.Point(29, 265);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
             this.btnKaydet.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -434,15 +529,6 @@
             this.bunifuCustomLabel1.TabIndex = 2;
             this.bunifuCustomLabel1.Text = "Görevli Adi";
             // 
-            // dene
-            // 
-            this.dene.AutoSize = true;
-            this.dene.Location = new System.Drawing.Point(625, 17);
-            this.dene.Name = "dene";
-            this.dene.Size = new System.Drawing.Size(45, 17);
-            this.dene.TabIndex = 101;
-            this.dene.Text = "label1";
-            // 
             // formGorevliTanim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -459,6 +545,9 @@
             this.Load += new System.EventHandler(this.formGorevliTanim_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.guna2ShadowPanel3.ResumeLayout(false);
+            this.guna2ShadowPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).EndInit();
             this.guna2ShadowPanel2.ResumeLayout(false);
             this.guna2ShadowPanel2.PerformLayout();
@@ -490,5 +579,10 @@
         private Guna.UI.WinForms.GunaAdvenceButton btnGuncelle;
         private Guna.UI.WinForms.GunaAdvenceButton btnKaydet;
         private System.Windows.Forms.Label dene;
+        private Bunifu.Framework.UI.BunifuCustomLabel isIt;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel3;
+        private Guna.UI.WinForms.GunaRadioButton rdoBilgiIslem;
+        private Guna.UI.WinForms.GunaTextBox txtAra;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

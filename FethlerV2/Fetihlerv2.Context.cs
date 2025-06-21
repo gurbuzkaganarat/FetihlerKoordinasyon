@@ -27,14 +27,15 @@ namespace FethlerV2
     
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbl_Araclar> tbl_Araclar { get; set; }
-        public virtual DbSet<tbl_Bolgeler> tbl_Bolgeler { get; set; }
         public virtual DbSet<tbl_Donemler> tbl_Donemler { get; set; }
         public virtual DbSet<tbl_Hastaliklar> tbl_Hastaliklar { get; set; }
         public virtual DbSet<tbl_Kategoriler> tbl_Kategoriler { get; set; }
-        public virtual DbSet<tbl_Kisiler> tbl_Kisiler { get; set; }
-        public virtual DbSet<tbl_Koyler> tbl_Koyler { get; set; }
         public virtual DbSet<tbl_Maaslar> tbl_Maaslar { get; set; }
-        public virtual DbSet<tbl_Gorevliler> tbl_Gorevliler { get; set; }
         public virtual DbSet<tbl_Erzaklar> tbl_Erzaklar { get; set; }
+        public virtual DbSet<tbl_Kisiler> tbl_Kisiler { get; set; }
+        public virtual DbSet<tbl_Gorevliler> tbl_Gorevliler { get; set; }
+        public virtual DbSet<tbl_Bolgeler> tbl_Bolgeler { get; set; }
+        public virtual DbSet<tbl_SeferGorev> tbl_SeferGorev { get; set; }
+        public virtual DbSet<tbl_Koyler> tbl_Koyler { get; set; }
     }
 }

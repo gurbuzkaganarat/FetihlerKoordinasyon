@@ -14,13 +14,22 @@ namespace FethlerV2
     
     public partial class tbl_Araclar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_Araclar()
+        {
+            this.tbl_SeferGorev = new HashSet<tbl_SeferGorev>();
+        }
+    
         public int AracNo { get; set; }
         public string AracAdi { get; set; }
         public Nullable<int> AracSahip { get; set; }
         public Nullable<bool> Seç { get; set; }
         public Nullable<bool> Aktiflik { get; set; }
         public Nullable<int> AracKapasite { get; set; }
+        public Nullable<bool> Gorevlendir { get; set; }
     
         public virtual tbl_Gorevliler tbl_Gorevliler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_SeferGorev> tbl_SeferGorev { get; set; }
     }
 }

@@ -25,6 +25,7 @@
           <Property Name="Seç" Type="bit" />
           <Property Name="Aktiflik" Type="bit" />
           <Property Name="AracKapasite" Type="int" />
+          <Property Name="Gorevlendir" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_Bolgeler">
           <Key>
@@ -36,6 +37,10 @@
           <Property Name="Aktiflik" Type="bit" />
           <Property Name="BolgeSorumlusu" Type="varchar" MaxLength="50" />
           <Property Name="BolgeYardımcısı" Type="varchar" MaxLength="50" />
+          <Property Name="d1" Type="varchar" MaxLength="50" />
+          <Property Name="d2" Type="varchar" MaxLength="50" />
+          <Property Name="d3" Type="varchar" MaxLength="50" />
+          <Property Name="BolgeBilgiIslemci" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_Donemler">
           <Key>
@@ -45,6 +50,8 @@
           <Property Name="DonemAdi" Type="varchar" MaxLength="50" />
           <Property Name="PaketAgirligi" Type="int" />
           <Property Name="Aktiflik" Type="bit" />
+          <Property Name="Kategori" Type="int" />
+          <Property Name="Icerik" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tbl_Erzaklar">
           <Key>
@@ -65,6 +72,10 @@
           <Property Name="GorevliTel" Type="varchar" MaxLength="50" />
           <Property Name="Aktiflik" Type="bit" />
           <Property Name="Seç" Type="bit" />
+          <Property Name="Gorevlendir" Type="bit" />
+          <Property Name="it" Type="nvarchar" MaxLength="50" />
+          <Property Name="KurbanGörevi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gizle" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_Hastaliklar">
           <Key>
@@ -89,16 +100,16 @@
           <Property Name="KisiNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KisiAd" Type="varchar" MaxLength="50" />
           <Property Name="KisiSoyAd" Type="varchar" MaxLength="50" />
-          <Property Name="DogumTarihi" Type="datetime" />
+          <Property Name="DogumTarihi" Type="int" />
           <Property Name="MedeniHal" Type="varchar" MaxLength="5" />
           <Property Name="Cinsiyet" Type="varchar" MaxLength="5" />
-          <Property Name="EvDurumu" Type="varchar" MaxLength="3" />
-          <Property Name="AraziDurumu" Type="varchar" MaxLength="3" />
+          <Property Name="EvDurumu" Type="varchar" MaxLength="20" />
+          <Property Name="AraziDurumu" Type="varchar" MaxLength="20" />
           <Property Name="BüyükBas" Type="varchar" MaxLength="3" />
           <Property Name="KücükBas" Type="varchar" MaxLength="3" />
-          <Property Name="BakımDurumu" Type="varchar" MaxLength="10" />
+          <Property Name="BakımDurumu" Type="varchar" MaxLength="20" />
           <Property Name="IsDurumu" Type="varchar" MaxLength="12" />
-          <Property Name="EkBilgi" Type="varchar" MaxLength="250" />
+          <Property Name="EkBilgi" Type="varchar" MaxLength="500" />
           <Property Name="Hastalik" Type="int" />
           <Property Name="Koy" Type="int" />
           <Property Name="Kategori" Type="int" />
@@ -107,7 +118,7 @@
           <Property Name="Maas" Type="int" />
           <Property Name="TcNo" Type="varchar" MaxLength="11" />
           <Property Name="Referans" Type="int" />
-          <Property Name="AileYakınları" Type="varchar" MaxLength="250" />
+          <Property Name="Adres" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="tbl_Koyler">
           <Key>
@@ -123,6 +134,9 @@
           <Property Name="Aktiflik" Type="bit" />
           <Property Name="Sec" Type="bit" />
           <Property Name="Bolge" Type="int" />
+          <Property Name="Gorevlendir" Type="bit" />
+          <Property Name="Güzergah" Type="int" />
+          <Property Name="Konum" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_Maaslar">
           <Key>
@@ -132,6 +146,21 @@
           <Property Name="MaasAdi" Type="varchar" MaxLength="50" />
           <Property Name="MaasDegeri" Type="int" />
           <Property Name="Aktiflik" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_SeferGorev">
+          <Key>
+            <PropertyRef Name="Gorev_id" />
+          </Key>
+          <Property Name="Gorev_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Arac_id" Type="int" />
+          <Property Name="Sofor_id" Type="int" />
+          <Property Name="Gorevli_ids" Type="nvarchar" MaxLength="200" />
+          <Property Name="Köyler" Type="nvarchar" MaxLength="200" />
+          <Property Name="Bölge" Type="int" />
+          <Property Name="Koy_ids" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gorevli" Type="nvarchar" MaxLength="200" />
+          <Property Name="PaketSayisi" Type="int" />
+          <Property Name="cikisSirasi" Type="int" />
         </EntityType>
         <Association Name="FK_tbl_Araclar_tbl_Gorevliler">
           <End Role="tbl_Gorevliler" Type="Self.tbl_Gorevliler" Multiplicity="0..1" />
@@ -229,6 +258,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbl_SeferGorev_tbl_Araclar">
+          <End Role="tbl_Araclar" Type="Self.tbl_Araclar" Multiplicity="0..1" />
+          <End Role="tbl_SeferGorev" Type="Self.tbl_SeferGorev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Araclar">
+              <PropertyRef Name="AracNo" />
+            </Principal>
+            <Dependent Role="tbl_SeferGorev">
+              <PropertyRef Name="Arac_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SeferGorev_tbl_Bolgeler">
+          <End Role="tbl_Bolgeler" Type="Self.tbl_Bolgeler" Multiplicity="0..1" />
+          <End Role="tbl_SeferGorev" Type="Self.tbl_SeferGorev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bolgeler">
+              <PropertyRef Name="BolgeNo" />
+            </Principal>
+            <Dependent Role="tbl_SeferGorev">
+              <PropertyRef Name="Bölge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SeferGorev_tbl_Gorevliler2">
+          <End Role="tbl_Gorevliler" Type="Self.tbl_Gorevliler" Multiplicity="0..1" />
+          <End Role="tbl_SeferGorev" Type="Self.tbl_SeferGorev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Gorevliler">
+              <PropertyRef Name="GorevliNo" />
+            </Principal>
+            <Dependent Role="tbl_SeferGorev">
+              <PropertyRef Name="Sofor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="FetihlerV2ModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Araclar" EntityType="Self.tbl_Araclar" Schema="dbo" store:Type="Tables" />
@@ -241,6 +306,7 @@
           <EntitySet Name="tbl_Kisiler" EntityType="Self.tbl_Kisiler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Koyler" EntityType="Self.tbl_Koyler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Maaslar" EntityType="Self.tbl_Maaslar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SeferGorev" EntityType="Self.tbl_SeferGorev" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tbl_Araclar_tbl_Gorevliler" Association="Self.FK_tbl_Araclar_tbl_Gorevliler">
             <End Role="tbl_Gorevliler" EntitySet="tbl_Gorevliler" />
             <End Role="tbl_Araclar" EntitySet="tbl_Araclar" />
@@ -273,6 +339,18 @@
             <End Role="tbl_Bolgeler" EntitySet="tbl_Bolgeler" />
             <End Role="tbl_Koyler" EntitySet="tbl_Koyler" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbl_SeferGorev_tbl_Araclar" Association="Self.FK_tbl_SeferGorev_tbl_Araclar">
+            <End Role="tbl_Araclar" EntitySet="tbl_Araclar" />
+            <End Role="tbl_SeferGorev" EntitySet="tbl_SeferGorev" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SeferGorev_tbl_Bolgeler" Association="Self.FK_tbl_SeferGorev_tbl_Bolgeler">
+            <End Role="tbl_Bolgeler" EntitySet="tbl_Bolgeler" />
+            <End Role="tbl_SeferGorev" EntitySet="tbl_SeferGorev" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SeferGorev_tbl_Gorevliler2" Association="Self.FK_tbl_SeferGorev_tbl_Gorevliler2">
+            <End Role="tbl_Gorevliler" EntitySet="tbl_Gorevliler" />
+            <End Role="tbl_SeferGorev" EntitySet="tbl_SeferGorev" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -281,27 +359,22 @@
         <EntityContainer Name="FetihlerV2Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="FetihlerV2Model.sysdiagrams" />
           <EntitySet Name="tbl_Araclar" EntityType="FetihlerV2Model.tbl_Araclar" />
-          <EntitySet Name="tbl_Bolgeler" EntityType="FetihlerV2Model.tbl_Bolgeler" />
           <EntitySet Name="tbl_Donemler" EntityType="FetihlerV2Model.tbl_Donemler" />
           <EntitySet Name="tbl_Hastaliklar" EntityType="FetihlerV2Model.tbl_Hastaliklar" />
           <EntitySet Name="tbl_Kategoriler" EntityType="FetihlerV2Model.tbl_Kategoriler" />
-          <EntitySet Name="tbl_Kisiler" EntityType="FetihlerV2Model.tbl_Kisiler" />
-          <EntitySet Name="tbl_Koyler" EntityType="FetihlerV2Model.tbl_Koyler" />
           <EntitySet Name="tbl_Maaslar" EntityType="FetihlerV2Model.tbl_Maaslar" />
-          <AssociationSet Name="FK_tbl_Koyler_tbl_Bolgeler" Association="FetihlerV2Model.FK_tbl_Koyler_tbl_Bolgeler">
-            <End Role="tbl_Bolgeler" EntitySet="tbl_Bolgeler" />
-            <End Role="tbl_Koyler" EntitySet="tbl_Koyler" />
+          <EntitySet Name="tbl_Erzaklar" EntityType="FetihlerV2Model.tbl_Erzaklar" />
+          <AssociationSet Name="FK_tbl_Erzaklar_tbl_Donemler" Association="FetihlerV2Model.FK_tbl_Erzaklar_tbl_Donemler">
+            <End Role="tbl_Donemler" EntitySet="tbl_Donemler" />
+            <End Role="tbl_Erzaklar" EntitySet="tbl_Erzaklar" />
           </AssociationSet>
+          <EntitySet Name="tbl_Kisiler" EntityType="FetihlerV2Model.tbl_Kisiler" />
           <AssociationSet Name="FK_tbl_Kisiler_tbl_Hastaliklar" Association="FetihlerV2Model.FK_tbl_Kisiler_tbl_Hastaliklar">
             <End Role="tbl_Hastaliklar" EntitySet="tbl_Hastaliklar" />
             <End Role="tbl_Kisiler" EntitySet="tbl_Kisiler" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_Kisiler_tbl_Kategoriler" Association="FetihlerV2Model.FK_tbl_Kisiler_tbl_Kategoriler">
             <End Role="tbl_Kategoriler" EntitySet="tbl_Kategoriler" />
-            <End Role="tbl_Kisiler" EntitySet="tbl_Kisiler" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_Kisiler_tbl_Koyler" Association="FetihlerV2Model.FK_tbl_Kisiler_tbl_Koyler">
-            <End Role="tbl_Koyler" EntitySet="tbl_Koyler" />
             <End Role="tbl_Kisiler" EntitySet="tbl_Kisiler" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_Kisiler_tbl_Maaslar" Association="FetihlerV2Model.FK_tbl_Kisiler_tbl_Maaslar">
@@ -317,12 +390,30 @@
             <End Role="tbl_Gorevliler" EntitySet="tbl_Gorevliler" />
             <End Role="tbl_Kisiler" EntitySet="tbl_Kisiler" />
           </AssociationSet>
-          <EntitySet Name="tbl_Erzaklar" EntityType="FetihlerV2Model.tbl_Erzaklar" />
-          <AssociationSet Name="FK_tbl_Erzaklar_tbl_Donemler" Association="FetihlerV2Model.FK_tbl_Erzaklar_tbl_Donemler">
-            <End Role="tbl_Donemler" EntitySet="tbl_Donemler" />
-            <End Role="tbl_Erzaklar" EntitySet="tbl_Erzaklar" />
+          <EntitySet Name="tbl_Bolgeler" EntityType="FetihlerV2Model.tbl_Bolgeler" />
+          <EntitySet Name="tbl_SeferGorev" EntityType="FetihlerV2Model.tbl_SeferGorev" />
+          <AssociationSet Name="FK_tbl_SeferGorev_tbl_Araclar" Association="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Araclar">
+            <End Role="tbl_Araclar" EntitySet="tbl_Araclar" />
+            <End Role="tbl_SeferGorev" EntitySet="tbl_SeferGorev" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_tbl_SeferGorev_tbl_Bolgeler" Association="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Bolgeler">
+            <End Role="tbl_Bolgeler" EntitySet="tbl_Bolgeler" />
+            <End Role="tbl_SeferGorev" EntitySet="tbl_SeferGorev" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SeferGorev_tbl_Gorevliler2" Association="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Gorevliler2">
+            <End Role="tbl_Gorevliler" EntitySet="tbl_Gorevliler" />
+            <End Role="tbl_SeferGorev" EntitySet="tbl_SeferGorev" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Koyler" EntityType="FetihlerV2Model.tbl_Koyler" />
+          <AssociationSet Name="FK_tbl_Koyler_tbl_Bolgeler" Association="FetihlerV2Model.FK_tbl_Koyler_tbl_Bolgeler">
+            <End Role="tbl_Bolgeler" EntitySet="tbl_Bolgeler" />
+            <End Role="tbl_Koyler" EntitySet="tbl_Koyler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Kisiler_tbl_Koyler" Association="FetihlerV2Model.FK_tbl_Kisiler_tbl_Koyler">
+            <End Role="tbl_Koyler" EntitySet="tbl_Koyler" />
+            <End Role="tbl_Kisiler" EntitySet="tbl_Kisiler" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -343,19 +434,9 @@
           <Property Name="Seç" Type="Boolean" />
           <Property Name="Aktiflik" Type="Boolean" />
           <Property Name="AracKapasite" Type="Int32" />
+          <Property Name="Gorevlendir" Type="Boolean" />
           <NavigationProperty Name="tbl_Gorevliler" Relationship="FetihlerV2Model.FK_tbl_Araclar_tbl_Gorevliler" FromRole="tbl_Araclar" ToRole="tbl_Gorevliler" />
-        </EntityType>
-        <EntityType Name="tbl_Bolgeler">
-          <Key>
-            <PropertyRef Name="BolgeNo" />
-          </Key>
-          <Property Name="BolgeNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BolgeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BolgeAciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Aktiflik" Type="Boolean" />
-          <Property Name="BolgeSorumlusu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BolgeYardımcısı" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbl_Koyler" Relationship="FetihlerV2Model.FK_tbl_Koyler_tbl_Bolgeler" FromRole="tbl_Bolgeler" ToRole="tbl_Koyler" />
+          <NavigationProperty Name="tbl_SeferGorev" Relationship="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Araclar" FromRole="tbl_Araclar" ToRole="tbl_SeferGorev" />
         </EntityType>
         <EntityType Name="tbl_Donemler">
           <Key>
@@ -366,6 +447,8 @@
           <Property Name="PaketAgirligi" Type="Int32" />
           <Property Name="Aktiflik" Type="Boolean" />
           <NavigationProperty Name="tbl_Erzaklar" Relationship="FetihlerV2Model.FK_tbl_Erzaklar_tbl_Donemler" FromRole="tbl_Donemler" ToRole="tbl_Erzaklar" />
+          <Property Name="Kategori" Type="Int32" />
+          <Property Name="Icerik" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_Hastaliklar">
           <Key>
@@ -385,55 +468,6 @@
           <Property Name="Aktiflik" Type="Boolean" />
           <NavigationProperty Name="tbl_Kisiler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Kategoriler" FromRole="tbl_Kategoriler" ToRole="tbl_Kisiler" />
         </EntityType>
-        <EntityType Name="tbl_Kisiler">
-          <Key>
-            <PropertyRef Name="KisiNo" />
-          </Key>
-          <Property Name="KisiNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KisiAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="KisiSoyAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DogumTarihi" Type="DateTime" Precision="3" />
-          <Property Name="MedeniHal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Cinsiyet" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="EvDurumu" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="AraziDurumu" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="BüyükBas" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="KücükBas" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="BakımDurumu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="IsDurumu" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="EkBilgi" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Hastalik" Type="Int32" />
-          <Property Name="Koy" Type="Int32" />
-          <Property Name="Kategori" Type="Int32" />
-          <Property Name="Aktiflik" Type="Boolean" />
-          <Property Name="Seç" Type="Boolean" />
-          <Property Name="Maas" Type="Int32" />
-          <Property Name="TcNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-          <Property Name="Referans" Type="Int32" />
-          <Property Name="AileYakınları" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbl_Hastaliklar" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Hastaliklar" FromRole="tbl_Kisiler" ToRole="tbl_Hastaliklar" />
-          <NavigationProperty Name="tbl_Kategoriler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Kategoriler" FromRole="tbl_Kisiler" ToRole="tbl_Kategoriler" />
-          <NavigationProperty Name="tbl_Koyler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Koyler" FromRole="tbl_Kisiler" ToRole="tbl_Koyler" />
-          <NavigationProperty Name="tbl_Maaslar" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Maaslar" FromRole="tbl_Kisiler" ToRole="tbl_Maaslar" />
-          <NavigationProperty Name="tbl_Gorevliler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Gorevliler" FromRole="tbl_Kisiler" ToRole="tbl_Gorevliler" />
-        </EntityType>
-        <EntityType Name="tbl_Koyler">
-          <Key>
-            <PropertyRef Name="KoyNo" />
-          </Key>
-          <Property Name="KoyNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KoyAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MuhtarAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MuhtarCepTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="YardimciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="YardimciTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="KoyDetay" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Aktiflik" Type="Boolean" />
-          <Property Name="Sec" Type="Boolean" />
-          <Property Name="Bolge" Type="Int32" />
-          <NavigationProperty Name="tbl_Bolgeler" Relationship="FetihlerV2Model.FK_tbl_Koyler_tbl_Bolgeler" FromRole="tbl_Koyler" ToRole="tbl_Bolgeler" />
-          <NavigationProperty Name="tbl_Kisiler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Koyler" FromRole="tbl_Koyler" ToRole="tbl_Kisiler" />
-        </EntityType>
         <EntityType Name="tbl_Maaslar">
           <Key>
             <PropertyRef Name="MaasNo" />
@@ -444,18 +478,59 @@
           <Property Name="Aktiflik" Type="Boolean" />
           <NavigationProperty Name="tbl_Kisiler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Maaslar" FromRole="tbl_Maaslar" ToRole="tbl_Kisiler" />
         </EntityType>
-        <Association Name="FK_tbl_Koyler_tbl_Bolgeler">
-          <End Type="FetihlerV2Model.tbl_Bolgeler" Role="tbl_Bolgeler" Multiplicity="0..1" />
-          <End Type="FetihlerV2Model.tbl_Koyler" Role="tbl_Koyler" Multiplicity="*" />
+        <EntityType Name="tbl_Erzaklar">
+          <Key>
+            <PropertyRef Name="ErzakNo" />
+          </Key>
+          <Property Name="ErzakNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErzakAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DonemNo" Type="Int32" />
+          <NavigationProperty Name="tbl_Donemler" Relationship="FetihlerV2Model.FK_tbl_Erzaklar_tbl_Donemler" FromRole="tbl_Erzaklar" ToRole="tbl_Donemler" />
+        </EntityType>
+        <Association Name="FK_tbl_Erzaklar_tbl_Donemler">
+          <End Type="FetihlerV2Model.tbl_Donemler" Role="tbl_Donemler" Multiplicity="0..1" />
+          <End Type="FetihlerV2Model.tbl_Erzaklar" Role="tbl_Erzaklar" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbl_Bolgeler">
-              <PropertyRef Name="BolgeNo" />
+            <Principal Role="tbl_Donemler">
+              <PropertyRef Name="DonemNo" />
             </Principal>
-            <Dependent Role="tbl_Koyler">
-              <PropertyRef Name="Bolge" />
+            <Dependent Role="tbl_Erzaklar">
+              <PropertyRef Name="DonemNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tbl_Kisiler">
+          <Key>
+            <PropertyRef Name="KisiNo" />
+          </Key>
+          <Property Name="KisiNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KisiSoyAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DogumTarihi" Type="Int32" />
+          <Property Name="MedeniHal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EvDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AraziDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BüyükBas" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="KücükBas" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="BakımDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsDurumu" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="EkBilgi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Hastalik" Type="Int32" />
+          <Property Name="Koy" Type="Int32" />
+          <Property Name="Kategori" Type="Int32" />
+          <Property Name="Aktiflik" Type="Boolean" />
+          <Property Name="Seç" Type="Boolean" />
+          <Property Name="Maas" Type="Int32" />
+          <Property Name="TcNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Referans" Type="Int32" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Hastaliklar" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Hastaliklar" FromRole="tbl_Kisiler" ToRole="tbl_Hastaliklar" />
+          <NavigationProperty Name="tbl_Kategoriler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Kategoriler" FromRole="tbl_Kisiler" ToRole="tbl_Kategoriler" />
+          <NavigationProperty Name="tbl_Maaslar" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Maaslar" FromRole="tbl_Kisiler" ToRole="tbl_Maaslar" />
+          <NavigationProperty Name="tbl_Gorevliler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Gorevliler" FromRole="tbl_Kisiler" ToRole="tbl_Gorevliler" />
+          <NavigationProperty Name="tbl_Koyler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Koyler" FromRole="tbl_Kisiler" ToRole="tbl_Koyler" />
+        </EntityType>
         <Association Name="FK_tbl_Kisiler_tbl_Hastaliklar">
           <End Type="FetihlerV2Model.tbl_Hastaliklar" Role="tbl_Hastaliklar" Multiplicity="0..1" />
           <End Type="FetihlerV2Model.tbl_Kisiler" Role="tbl_Kisiler" Multiplicity="*" />
@@ -477,18 +552,6 @@
             </Principal>
             <Dependent Role="tbl_Kisiler">
               <PropertyRef Name="Kategori" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_Kisiler_tbl_Koyler">
-          <End Type="FetihlerV2Model.tbl_Koyler" Role="tbl_Koyler" Multiplicity="0..1" />
-          <End Type="FetihlerV2Model.tbl_Kisiler" Role="tbl_Kisiler" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_Koyler">
-              <PropertyRef Name="KoyNo" />
-            </Principal>
-            <Dependent Role="tbl_Kisiler">
-              <PropertyRef Name="Koy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -515,8 +578,13 @@
           <Property Name="GorevliTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Aktiflik" Type="Boolean" />
           <Property Name="Seç" Type="Boolean" />
+          <Property Name="Gorevlendir" Type="Boolean" />
+          <Property Name="it" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="tbl_Araclar" Relationship="FetihlerV2Model.FK_tbl_Araclar_tbl_Gorevliler" FromRole="tbl_Gorevliler" ToRole="tbl_Araclar" />
           <NavigationProperty Name="tbl_Kisiler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Gorevliler" FromRole="tbl_Gorevliler" ToRole="tbl_Kisiler" />
+          <NavigationProperty Name="tbl_SeferGorev" Relationship="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Gorevliler2" FromRole="tbl_Gorevliler" ToRole="tbl_SeferGorev" />
+          <Property Name="KurbanGörevi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gizle" Type="Boolean" />
         </EntityType>
         <Association Name="FK_tbl_Araclar_tbl_Gorevliler">
           <End Type="FetihlerV2Model.tbl_Gorevliler" Role="tbl_Gorevliler" Multiplicity="0..1" />
@@ -542,24 +610,118 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="tbl_Erzaklar">
+        <EntityType Name="tbl_Bolgeler">
           <Key>
-            <PropertyRef Name="ErzakNo" />
+            <PropertyRef Name="BolgeNo" />
           </Key>
-          <Property Name="ErzakNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ErzakAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DonemNo" Type="Int32" />
-          <NavigationProperty Name="tbl_Donemler" Relationship="FetihlerV2Model.FK_tbl_Erzaklar_tbl_Donemler" FromRole="tbl_Erzaklar" ToRole="tbl_Donemler" />
+          <Property Name="BolgeNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolgeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BolgeAciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Aktiflik" Type="Boolean" />
+          <Property Name="BolgeSorumlusu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BolgeYardımcısı" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="d3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BolgeBilgiIslemci" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_SeferGorev" Relationship="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Bolgeler" FromRole="tbl_Bolgeler" ToRole="tbl_SeferGorev" />
+          <NavigationProperty Name="tbl_Koyler" Relationship="FetihlerV2Model.FK_tbl_Koyler_tbl_Bolgeler" FromRole="tbl_Bolgeler" ToRole="tbl_Koyler" />
         </EntityType>
-        <Association Name="FK_tbl_Erzaklar_tbl_Donemler">
-          <End Type="FetihlerV2Model.tbl_Donemler" Role="tbl_Donemler" Multiplicity="0..1" />
-          <End Type="FetihlerV2Model.tbl_Erzaklar" Role="tbl_Erzaklar" Multiplicity="*" />
+        <EntityType Name="tbl_SeferGorev">
+          <Key>
+            <PropertyRef Name="Gorev_id" />
+          </Key>
+          <Property Name="Gorev_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Arac_id" Type="Int32" />
+          <Property Name="Sofor_id" Type="Int32" />
+          <Property Name="Gorevli_ids" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Köyler" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Bölge" Type="Int32" />
+          <Property Name="Koy_ids" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gorevli" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PaketSayisi" Type="Int32" />
+          <Property Name="cikisSirasi" Type="Int32" />
+          <NavigationProperty Name="tbl_Araclar" Relationship="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Araclar" FromRole="tbl_SeferGorev" ToRole="tbl_Araclar" />
+          <NavigationProperty Name="tbl_Bolgeler" Relationship="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Bolgeler" FromRole="tbl_SeferGorev" ToRole="tbl_Bolgeler" />
+          <NavigationProperty Name="tbl_Gorevliler" Relationship="FetihlerV2Model.FK_tbl_SeferGorev_tbl_Gorevliler2" FromRole="tbl_SeferGorev" ToRole="tbl_Gorevliler" />
+        </EntityType>
+        <Association Name="FK_tbl_SeferGorev_tbl_Araclar">
+          <End Type="FetihlerV2Model.tbl_Araclar" Role="tbl_Araclar" Multiplicity="0..1" />
+          <End Type="FetihlerV2Model.tbl_SeferGorev" Role="tbl_SeferGorev" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tbl_Donemler">
-              <PropertyRef Name="DonemNo" />
+            <Principal Role="tbl_Araclar">
+              <PropertyRef Name="AracNo" />
             </Principal>
-            <Dependent Role="tbl_Erzaklar">
-              <PropertyRef Name="DonemNo" />
+            <Dependent Role="tbl_SeferGorev">
+              <PropertyRef Name="Arac_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SeferGorev_tbl_Bolgeler">
+          <End Type="FetihlerV2Model.tbl_Bolgeler" Role="tbl_Bolgeler" Multiplicity="0..1" />
+          <End Type="FetihlerV2Model.tbl_SeferGorev" Role="tbl_SeferGorev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bolgeler">
+              <PropertyRef Name="BolgeNo" />
+            </Principal>
+            <Dependent Role="tbl_SeferGorev">
+              <PropertyRef Name="Bölge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SeferGorev_tbl_Gorevliler2">
+          <End Type="FetihlerV2Model.tbl_Gorevliler" Role="tbl_Gorevliler" Multiplicity="0..1" />
+          <End Type="FetihlerV2Model.tbl_SeferGorev" Role="tbl_SeferGorev" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Gorevliler">
+              <PropertyRef Name="GorevliNo" />
+            </Principal>
+            <Dependent Role="tbl_SeferGorev">
+              <PropertyRef Name="Sofor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_Koyler">
+          <Key>
+            <PropertyRef Name="KoyNo" />
+          </Key>
+          <Property Name="KoyNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KoyAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MuhtarAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MuhtarCepTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YardimciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YardimciTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KoyDetay" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Aktiflik" Type="Boolean" />
+          <Property Name="Sec" Type="Boolean" />
+          <Property Name="Bolge" Type="Int32" />
+          <Property Name="Gorevlendir" Type="Boolean" />
+          <Property Name="Güzergah" Type="Int32" />
+          <Property Name="Konum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Bolgeler" Relationship="FetihlerV2Model.FK_tbl_Koyler_tbl_Bolgeler" FromRole="tbl_Koyler" ToRole="tbl_Bolgeler" />
+          <NavigationProperty Name="tbl_Kisiler" Relationship="FetihlerV2Model.FK_tbl_Kisiler_tbl_Koyler" FromRole="tbl_Koyler" ToRole="tbl_Kisiler" />
+        </EntityType>
+        <Association Name="FK_tbl_Koyler_tbl_Bolgeler">
+          <End Type="FetihlerV2Model.tbl_Bolgeler" Role="tbl_Bolgeler" Multiplicity="0..1" />
+          <End Type="FetihlerV2Model.tbl_Koyler" Role="tbl_Koyler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Bolgeler">
+              <PropertyRef Name="BolgeNo" />
+            </Principal>
+            <Dependent Role="tbl_Koyler">
+              <PropertyRef Name="Bolge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Kisiler_tbl_Koyler">
+          <End Type="FetihlerV2Model.tbl_Koyler" Role="tbl_Koyler" Multiplicity="0..1" />
+          <End Type="FetihlerV2Model.tbl_Kisiler" Role="tbl_Kisiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Koyler">
+              <PropertyRef Name="KoyNo" />
+            </Principal>
+            <Dependent Role="tbl_Kisiler">
+              <PropertyRef Name="Koy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -583,6 +745,7 @@
           <EntitySetMapping Name="tbl_Araclar">
             <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Araclar">
               <MappingFragment StoreEntitySet="tbl_Araclar">
+                <ScalarProperty Name="Gorevlendir" ColumnName="Gorevlendir" />
                 <ScalarProperty Name="AracKapasite" ColumnName="AracKapasite" />
                 <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
                 <ScalarProperty Name="Seç" ColumnName="Seç" />
@@ -592,21 +755,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Bolgeler">
-            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Bolgeler">
-              <MappingFragment StoreEntitySet="tbl_Bolgeler">
-                <ScalarProperty Name="BolgeYardımcısı" ColumnName="BolgeYardımcısı" />
-                <ScalarProperty Name="BolgeSorumlusu" ColumnName="BolgeSorumlusu" />
-                <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
-                <ScalarProperty Name="BolgeAciklama" ColumnName="BolgeAciklama" />
-                <ScalarProperty Name="BolgeAdi" ColumnName="BolgeAdi" />
-                <ScalarProperty Name="BolgeNo" ColumnName="BolgeNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Donemler">
             <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Donemler">
               <MappingFragment StoreEntitySet="tbl_Donemler">
+                <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
                 <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
                 <ScalarProperty Name="PaketAgirligi" ColumnName="PaketAgirligi" />
                 <ScalarProperty Name="DonemAdi" ColumnName="DonemAdi" />
@@ -632,10 +785,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Maaslar">
+            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Maaslar">
+              <MappingFragment StoreEntitySet="tbl_Maaslar">
+                <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
+                <ScalarProperty Name="MaasDegeri" ColumnName="MaasDegeri" />
+                <ScalarProperty Name="MaasAdi" ColumnName="MaasAdi" />
+                <ScalarProperty Name="MaasNo" ColumnName="MaasNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Erzaklar">
+            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Erzaklar">
+              <MappingFragment StoreEntitySet="tbl_Erzaklar">
+                <ScalarProperty Name="DonemNo" ColumnName="DonemNo" />
+                <ScalarProperty Name="ErzakAdi" ColumnName="ErzakAdi" />
+                <ScalarProperty Name="ErzakNo" ColumnName="ErzakNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Kisiler">
             <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Kisiler">
               <MappingFragment StoreEntitySet="tbl_Kisiler">
-                <ScalarProperty Name="AileYakınları" ColumnName="AileYakınları" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
                 <ScalarProperty Name="Referans" ColumnName="Referans" />
                 <ScalarProperty Name="TcNo" ColumnName="TcNo" />
                 <ScalarProperty Name="Maas" ColumnName="Maas" />
@@ -660,35 +832,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Koyler">
-            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Koyler">
-              <MappingFragment StoreEntitySet="tbl_Koyler">
-                <ScalarProperty Name="Bolge" ColumnName="Bolge" />
-                <ScalarProperty Name="Sec" ColumnName="Sec" />
-                <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
-                <ScalarProperty Name="KoyDetay" ColumnName="KoyDetay" />
-                <ScalarProperty Name="YardimciTel" ColumnName="YardimciTel" />
-                <ScalarProperty Name="YardimciAdi" ColumnName="YardimciAdi" />
-                <ScalarProperty Name="MuhtarCepTel" ColumnName="MuhtarCepTel" />
-                <ScalarProperty Name="MuhtarAdi" ColumnName="MuhtarAdi" />
-                <ScalarProperty Name="KoyAdi" ColumnName="KoyAdi" />
-                <ScalarProperty Name="KoyNo" ColumnName="KoyNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Maaslar">
-            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Maaslar">
-              <MappingFragment StoreEntitySet="tbl_Maaslar">
-                <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
-                <ScalarProperty Name="MaasDegeri" ColumnName="MaasDegeri" />
-                <ScalarProperty Name="MaasAdi" ColumnName="MaasAdi" />
-                <ScalarProperty Name="MaasNo" ColumnName="MaasNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Gorevliler">
             <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Gorevliler">
               <MappingFragment StoreEntitySet="tbl_Gorevliler">
+                <ScalarProperty Name="Gizle" ColumnName="Gizle" />
+                <ScalarProperty Name="KurbanGörevi" ColumnName="KurbanGörevi" />
+                <ScalarProperty Name="it" ColumnName="it" />
+                <ScalarProperty Name="Gorevlendir" ColumnName="Gorevlendir" />
                 <ScalarProperty Name="Seç" ColumnName="Seç" />
                 <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
                 <ScalarProperty Name="GorevliTel" ColumnName="GorevliTel" />
@@ -699,12 +849,54 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Erzaklar">
-            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Erzaklar">
-              <MappingFragment StoreEntitySet="tbl_Erzaklar">
-                <ScalarProperty Name="DonemNo" ColumnName="DonemNo" />
-                <ScalarProperty Name="ErzakAdi" ColumnName="ErzakAdi" />
-                <ScalarProperty Name="ErzakNo" ColumnName="ErzakNo" />
+          <EntitySetMapping Name="tbl_Bolgeler">
+            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Bolgeler">
+              <MappingFragment StoreEntitySet="tbl_Bolgeler">
+                <ScalarProperty Name="BolgeBilgiIslemci" ColumnName="BolgeBilgiIslemci" />
+                <ScalarProperty Name="d3" ColumnName="d3" />
+                <ScalarProperty Name="d2" ColumnName="d2" />
+                <ScalarProperty Name="d1" ColumnName="d1" />
+                <ScalarProperty Name="BolgeYardımcısı" ColumnName="BolgeYardımcısı" />
+                <ScalarProperty Name="BolgeSorumlusu" ColumnName="BolgeSorumlusu" />
+                <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
+                <ScalarProperty Name="BolgeAciklama" ColumnName="BolgeAciklama" />
+                <ScalarProperty Name="BolgeAdi" ColumnName="BolgeAdi" />
+                <ScalarProperty Name="BolgeNo" ColumnName="BolgeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SeferGorev">
+            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_SeferGorev">
+              <MappingFragment StoreEntitySet="tbl_SeferGorev">
+                <ScalarProperty Name="cikisSirasi" ColumnName="cikisSirasi" />
+                <ScalarProperty Name="PaketSayisi" ColumnName="PaketSayisi" />
+                <ScalarProperty Name="Gorevli" ColumnName="Gorevli" />
+                <ScalarProperty Name="Koy_ids" ColumnName="Koy_ids" />
+                <ScalarProperty Name="Bölge" ColumnName="Bölge" />
+                <ScalarProperty Name="Köyler" ColumnName="Köyler" />
+                <ScalarProperty Name="Gorevli_ids" ColumnName="Gorevli_ids" />
+                <ScalarProperty Name="Sofor_id" ColumnName="Sofor_id" />
+                <ScalarProperty Name="Arac_id" ColumnName="Arac_id" />
+                <ScalarProperty Name="Gorev_id" ColumnName="Gorev_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Koyler">
+            <EntityTypeMapping TypeName="FetihlerV2Model.tbl_Koyler">
+              <MappingFragment StoreEntitySet="tbl_Koyler">
+                <ScalarProperty Name="Konum" ColumnName="Konum" />
+                <ScalarProperty Name="Güzergah" ColumnName="Güzergah" />
+                <ScalarProperty Name="Gorevlendir" ColumnName="Gorevlendir" />
+                <ScalarProperty Name="Bolge" ColumnName="Bolge" />
+                <ScalarProperty Name="Sec" ColumnName="Sec" />
+                <ScalarProperty Name="Aktiflik" ColumnName="Aktiflik" />
+                <ScalarProperty Name="KoyDetay" ColumnName="KoyDetay" />
+                <ScalarProperty Name="YardimciTel" ColumnName="YardimciTel" />
+                <ScalarProperty Name="YardimciAdi" ColumnName="YardimciAdi" />
+                <ScalarProperty Name="MuhtarCepTel" ColumnName="MuhtarCepTel" />
+                <ScalarProperty Name="MuhtarAdi" ColumnName="MuhtarAdi" />
+                <ScalarProperty Name="KoyAdi" ColumnName="KoyAdi" />
+                <ScalarProperty Name="KoyNo" ColumnName="KoyNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

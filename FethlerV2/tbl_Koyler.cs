@@ -30,6 +30,9 @@ namespace FethlerV2
         public Nullable<bool> Aktiflik { get; set; }
         public Nullable<bool> Sec { get; set; }
         public Nullable<int> Bolge { get; set; }
+        public Nullable<bool> Gorevlendir { get; set; }
+        public Nullable<int> Güzergah { get; set; }
+        public string Konum { get; set; }
     
         public virtual tbl_Bolgeler tbl_Bolgeler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

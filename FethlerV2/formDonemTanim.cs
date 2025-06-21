@@ -27,10 +27,12 @@ namespace FethlerV2
                             item.DonemNo,
                             item.DonemAdi,
                             item.PaketAgirligi,
+                            item.Icerik
 
                         };
             bunifuCustomDataGrid1.DataSource = query.ToList();
             bunifuCustomDataGrid1.Columns[0].Visible = false;
+            bunifuCustomDataGrid1.ClearSelection();
 
         }
         public void temizle()
@@ -38,6 +40,9 @@ namespace FethlerV2
             lblDonemNo.Text = null;
             txtDonemAdi.Text = "";
             txtPaketAgirligi.Text = "";
+            btnGuncelle.Enabled = false;
+            btnKaydet.Enabled = true;
+            btnSil.Enabled = false;
             txtDonemAdi.Focus();
 
         }
@@ -63,6 +68,10 @@ namespace FethlerV2
                 lblDonemNo.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[0].Value?.ToString();
                 txtDonemAdi.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[1].Value?.ToString();
                 txtPaketAgirligi.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                RchContent.Text= bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                btnGuncelle.Enabled = true;
+                btnKaydet.Enabled = false;
+                btnSil.Enabled = true;
             }
             catch 
             {
@@ -103,6 +112,7 @@ namespace FethlerV2
                             donemTanim.Aktiflik = true;
                             donemTanim.DonemAdi = txtDonemAdi.Text;
                             donemTanim.PaketAgirligi = Convert.ToInt32(txtPaketAgirligi.Text);
+                            donemTanim.Icerik = RchContent.Text;
                             db.tbl_Donemler.Add(donemTanim);
                             db.SaveChanges();
                             MessageBox.Show("Dönem Başarıyla Kayıt Edildi.");
@@ -173,6 +183,7 @@ namespace FethlerV2
                 var g = db.tbl_Donemler.Find(donemNo);
                 g.DonemAdi = txtDonemAdi.Text;
                 g.PaketAgirligi = Convert.ToInt32(txtPaketAgirligi.Text);
+                g.Icerik = RchContent.Text;
                 db.SaveChanges();
                 MessageBox.Show("Kayıt Başarıyla Güncellendi");
                 listele();
@@ -194,6 +205,36 @@ namespace FethlerV2
         private void txtPaketAgirligi_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        int hoveredRowIndex = -1;
+        private void bunifuCustomDataGrid1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex != hoveredRowIndex)
+            {
+                if (hoveredRowIndex >= 0 && hoveredRowIndex < bunifuCustomDataGrid1.Rows.Count)
+                {
+                    // Önceki hover satırını eski haline döndür
+                    bunifuCustomDataGrid1.Rows[hoveredRowIndex].DefaultCellStyle.BackColor = Color.FromArgb(120, 120, 150);
+                }
+
+                // Yeni hover satırı
+                bunifuCustomDataGrid1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(254, 110, 49);
+                hoveredRowIndex = e.RowIndex;
+            }
+        }
+
+        private void bunifuCustomDataGrid1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (hoveredRowIndex >= 0 && hoveredRowIndex < bunifuCustomDataGrid1.Rows.Count)
+            {
+                bunifuCustomDataGrid1.Rows[hoveredRowIndex].DefaultCellStyle.BackColor = Color.FromArgb(120, 120, 150);
+                hoveredRowIndex = -1;
+            }
+        }
+
+        private void bunifuCustomDataGrid1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            bunifuCustomDataGrid1.ClearSelection();
         }
     }
 }

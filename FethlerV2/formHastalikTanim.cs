@@ -30,12 +30,17 @@ namespace FethlerV2
                         };
                         bunifuCustomDataGrid1.DataSource=query.ToList();
             bunifuCustomDataGrid1.Columns[0].Visible = false;
+            bunifuCustomDataGrid1.ClearSelection();
 
         }
         public void temizle()
         {
             txtHastalikAdi.Text = "";
+            txtHastalikAdi.Text = "";
             lblHastalikNo.Text = "";
+            btnGuncelle.Enabled = false;
+            btnKaydet.Enabled = true;
+            btnSil.Enabled = false;
             txtHastalikAdi.Focus();
         }
         private void formHastalikTanim_Load(object sender, EventArgs e)
@@ -53,6 +58,10 @@ namespace FethlerV2
             {
                 lblHastalikNo.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[0].Value?.ToString();
                 txtHastalikAdi.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[1].Value?.ToString();
+
+                btnGuncelle.Enabled = true;
+                btnKaydet.Enabled = false;
+                btnSil.Enabled = true;
             }
             catch 
             {
@@ -174,6 +183,42 @@ namespace FethlerV2
             listele();
             temizle();
 
+        }
+        int hoveredRowIndex = -1;
+        private void bunifuCustomDataGrid1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex != hoveredRowIndex)
+            {
+                if (hoveredRowIndex >= 0 && hoveredRowIndex < bunifuCustomDataGrid1.Rows.Count)
+                {
+                    // Önceki hover satırını eski haline döndür
+                    bunifuCustomDataGrid1.Rows[hoveredRowIndex].DefaultCellStyle.BackColor = Color.FromArgb(120, 120, 150);
+                }
+
+                // Yeni hover satırı
+                bunifuCustomDataGrid1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(254, 110, 49);
+                hoveredRowIndex = e.RowIndex;
+            }
+        }
+
+        private void bunifuCustomDataGrid1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (hoveredRowIndex >= 0 && hoveredRowIndex < bunifuCustomDataGrid1.Rows.Count)
+            {
+                bunifuCustomDataGrid1.Rows[hoveredRowIndex].DefaultCellStyle.BackColor = Color.FromArgb(120, 120, 150);
+                hoveredRowIndex = -1;
+            }
+        }
+
+        private void bunifuCustomDataGrid1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            bunifuCustomDataGrid1.ClearSelection();
+        }
+
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            temizle();
+            listele();
         }
     }
 }

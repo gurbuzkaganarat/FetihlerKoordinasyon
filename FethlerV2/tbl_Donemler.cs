@@ -24,6 +24,8 @@ namespace FethlerV2
         public string DonemAdi { get; set; }
         public Nullable<int> PaketAgirligi { get; set; }
         public Nullable<bool> Aktiflik { get; set; }
+        public Nullable<int> Kategori { get; set; }
+        public string Icerik { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Erzaklar> tbl_Erzaklar { get; set; }

@@ -19,7 +19,7 @@ namespace FethlerV2
         FetihlerV2Entities1 db = new FetihlerV2Entities1();
 
 
-        private void   cmbDataLoad()
+        private void cmbDataLoad()
         {
 
             var sıralı = from item in db.tbl_Bolgeler
@@ -35,31 +35,34 @@ namespace FethlerV2
 
             cmbBolgeAd.DataSource = sıralı.ToList();
             cmbBolgeAd.ValueMember = "BolgeNo";
-            cmbBolgeAd.DisplayMember = "BolgeAdi"; 
+            cmbBolgeAd.DisplayMember = "BolgeAdi";
 
         }
         private void listele()
         {
 
             var query = from d1 in db.tbl_Koyler
-                            join d2 in db.tbl_Bolgeler on d1.Bolge equals d2.BolgeNo  into d2list  from d2 in d2list.DefaultIfEmpty()  // Önemli !!!  İlişkili Tabloda null değerleri listeler
+                        join d2 in db.tbl_Bolgeler on d1.Bolge equals d2.BolgeNo into d2list from d2 in d2list.DefaultIfEmpty()  // Önemli !!!  İlişkili Tabloda null değerleri listeler
 
                         where d1.Aktiflik == true
 
                         select new
                         {
                             KöyNo = d1.KoyNo,
-                            Bolge = d2.BolgeAdi,                     
-                            KöyAdi=d1.KoyAdi,
-                            MuhtarAdi=d1.MuhtarAdi,
-                            MuhtarTel=d1.MuhtarCepTel,
-                            YardimciAdi=d1.YardimciAdi,
-                            YardimciTel=d1.YardimciTel,
-                            Köyİhtiyac=d1.KoyDetay,
+                            Bolge = d2.BolgeAdi,
+                            KöyAdi = d1.KoyAdi,
+                            MuhtarAdi = d1.MuhtarAdi,
+                            MuhtarTel = d1.MuhtarCepTel,
+                            YardimciAdi = d1.YardimciAdi,
+                            YardimciTel = d1.YardimciTel,
+                            Köyİhtiyac = d1.KoyDetay,
+                            GüzergahSırası = d1.Güzergah,
+                            KonumKoordinat = d1.Konum
 
                         };
             bunifuCustomDataGrid1.DataSource = query.ToList();
             bunifuCustomDataGrid1.Columns[0].Visible = false;
+            bunifuCustomDataGrid1.ClearSelection();
 
 
 
@@ -72,9 +75,9 @@ namespace FethlerV2
 
             listele();
             cmbDataLoad();
-            temizle(); 
-           
-            
+            temizle();
+
+
         }
         private void temizle()
         {
@@ -83,17 +86,32 @@ namespace FethlerV2
             txtMuhtarTelefon.Text = "";
             txtYardimciTelefon.Text = "";
             txtYardimciAd.Text = "";
-            rchKoyDetay.Text = "";                      
+            rchKoyDetay.Text = "";
             lblKoyNo.Text = "";
             txtKoyAd.Focus();
             cmbBolgeAd.SelectedItem = null;
             cmbBolgeAd.SelectedItem = null;
+            txtKonumKoor.Text = "";
+            txt_guzergah.Text = "";
+            btnGuncelle.Enabled = false;
+            btnKaydet.Enabled = true;
+            btnSil.Enabled = false;
+            bunifuCustomDataGrid1.ClearSelection();
+            if (txtBolgeAra.Text == string.Empty && txtKoyAra.Text == string.Empty)
+            {
+                listele();
+            }
+            else {
+                koyara(bunifuCustomDataGrid1);
+                bolgeara(bunifuCustomDataGrid1);
+            }
+           // listele();
 
         }
 
-       
 
-      
+
+
 
         private void bunifuCustomDataGrid1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -107,23 +125,28 @@ namespace FethlerV2
                 txtYardimciAd.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[5].Value?.ToString();
                 txtYardimciTelefon.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[6].Value?.ToString();
                 rchKoyDetay.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[7].Value?.ToString();
+                txt_guzergah.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[8].Value?.ToString();
+                txtKonumKoor.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[9].Value?.ToString();
+                btnGuncelle.Enabled = true;
+                btnKaydet.Enabled = false;
+                btnSil.Enabled = true;
 
             }
-            catch 
+            catch
             {
 
-                
+
             }
-                      
 
 
-          
+
+
 
         }
 
-     
 
-     void mükerrer()
+
+        void mükerrer()
         {
             var query = from d1 in db.tbl_Koyler
                         where d1.Aktiflik == true
@@ -134,18 +157,18 @@ namespace FethlerV2
                         };
             var koyad = (from d1 in query select d1.KoyAdi).FirstOrDefault();
             var koyad2 = txtKoyAd.Text;
-            if (koyad==koyad2)
+            if (koyad == koyad2)
             {
                 MessageBox.Show("Aynı Köy Adına Sahip Kayıt Bulunmaktadır!");
             }
             else
             {
-                
-                
-                
-                    if (lblKoyNo.Text == "")
-                    {
-                        tbl_Koyler koyTanim = new tbl_Koyler();
+
+
+
+                if (lblKoyNo.Text == "")
+                {
+                    tbl_Koyler koyTanim = new tbl_Koyler();
                     if (string.IsNullOrEmpty(txtKoyAd.Text))
                     {
                         MessageBox.Show("Lütfen Eksik Alanları Doldurunuz.");
@@ -163,11 +186,15 @@ namespace FethlerV2
                         koyTanim.KoyDetay = rchKoyDetay.Text;
                         koyTanim.Aktiflik = true;
                         koyTanim.Sec = false;
+                        koyTanim.Güzergah = Convert.ToInt32( txt_guzergah.Text);
+                        koyTanim.Konum = txtKonumKoor.Text;
+
                         db.tbl_Koyler.Add(koyTanim);
                         try
                         {
                             db.SaveChanges();
                             MessageBox.Show("Köy Başarıyla Kayıt Edildi");
+
                             listele();
                             temizle();
                         }
@@ -177,13 +204,13 @@ namespace FethlerV2
 
                         }
                     }
-                        
-                    }
-                    else
-                    {
-                        MessageBox.Show("Kayıt Tekrarı Yapılamaz");
-                    }
-                
+
+                }
+                else
+                {
+                    MessageBox.Show("Kayıt Tekrarı Yapılamaz");
+                }
+
             }
         }
 
@@ -191,12 +218,12 @@ namespace FethlerV2
         {
 
             mükerrer();
-                                   
+
         }
 
         private void btnSil_Click_1(object sender, EventArgs e)
         {
-            if (lblKoyNo.Text !="")
+            if (lblKoyNo.Text != "")
             {
                 DialogResult onay;
                 onay = MessageBox.Show("Kayıt silme işlemini onaylıyor musunuz?", "Onay", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -206,7 +233,17 @@ namespace FethlerV2
                     {
                         int koyNo = Convert.ToInt32(lblKoyNo.Text);
                         var x = db.tbl_Koyler.Find(koyNo);
+
+
+
                         x.Aktiflik = false;
+
+                        var kisiler = db.tbl_Kisiler.Where(a => a.Koy == koyNo).ToList();
+                        foreach (var kisi in kisiler)
+                        {
+                            kisi.Aktiflik = false;
+                        }
+
                         db.SaveChanges();
                         MessageBox.Show("Kayıt Başarıyla Silindi");
                         temizle();
@@ -224,9 +261,9 @@ namespace FethlerV2
             {
                 MessageBox.Show("Silinecek Kayıt Seçilmedi");
             }
-                
-            
-           
+
+
+
         }
 
         private void btnGuncelle_Click_1(object sender, EventArgs e)
@@ -244,6 +281,8 @@ namespace FethlerV2
                 g.YardimciAdi = txtYardimciAd.Text;
                 g.YardimciTel = txtYardimciTelefon.Text;
                 g.KoyDetay = rchKoyDetay.Text;
+                g.Güzergah = Convert.ToInt32(txt_guzergah.Text);
+                g.Konum = txtKonumKoor.Text;
                 db.SaveChanges();
                 MessageBox.Show("Kayıt Başarıyla Güncellendi");
 
@@ -254,7 +293,7 @@ namespace FethlerV2
 
             }
             temizle();
-            listele();
+           // listele();
         }
 
         private void btnTemizle_Click_1(object sender, EventArgs e)
@@ -263,7 +302,7 @@ namespace FethlerV2
             temizle();
         }
 
-        private void txtBolgeAra_TextChanged(object sender, EventArgs e)
+        public void bolgeara(DataGridView data2)
         {
             string bolgeAra = txtBolgeAra.Text;
             string koyAra = txtKoyAra.Text;
@@ -286,9 +325,13 @@ namespace FethlerV2
                                 YardimciAdi = d1.YardimciAdi,
                                 YardimciTel = d1.YardimciTel,
                                 Köyİhtiyac = d1.KoyDetay,
+                                GüzergahSırası = d1.Güzergah,
+                                KonumKoordinat = d1.Konum,
 
                             };
-                bunifuCustomDataGrid1.DataSource = query.ToList();
+
+                data2.DataSource = query.ToList();
+                data2.Columns[0].Visible = false;
             }
             else
             {
@@ -298,7 +341,7 @@ namespace FethlerV2
 
                             where d1.Aktiflik == true
                             where d2.BolgeAdi.Contains(bolgeAra) && d1.KoyAdi.Contains(koyAra)
-                            
+
                             select new
                             {
                                 KöyNo = d1.KoyNo,
@@ -309,14 +352,24 @@ namespace FethlerV2
                                 YardimciAdi = d1.YardimciAdi,
                                 YardimciTel = d1.YardimciTel,
                                 Köyİhtiyac = d1.KoyDetay,
+                                GüzergahSırası = d1.Güzergah,
+                                KonumKoordinat = d1.Konum,
 
                             };
-                bunifuCustomDataGrid1.DataSource = query.ToList();
+
+
+                data2.DataSource = query.ToList();
+                data2.Columns[0].Visible = false;
             }
         }
 
-        private void txtKoyAra_TextChanged(object sender, EventArgs e)
+        private void txtBolgeAra_TextChanged(object sender, EventArgs e)
         {
+            bolgeara(bunifuCustomDataGrid1);
+
+        }
+
+        public void koyara(DataGridView data3) {
             string bolgeAra = txtBolgeAra.Text;
             string koyAra = txtKoyAra.Text;
             if (String.IsNullOrEmpty(bolgeAra))
@@ -338,9 +391,13 @@ namespace FethlerV2
                                 YardimciAdi = d1.YardimciAdi,
                                 YardimciTel = d1.YardimciTel,
                                 Köyİhtiyac = d1.KoyDetay,
+                                GüzergahSırası = d1.Güzergah,
+                                KonumKoordinat = d1.Konum,
 
                             };
-                bunifuCustomDataGrid1.DataSource = query.ToList();
+
+                data3.DataSource = query.ToList();
+                data3.Columns[0].Visible = false;
             }
             else
             {
@@ -361,10 +418,21 @@ namespace FethlerV2
                                 YardimciAdi = d1.YardimciAdi,
                                 YardimciTel = d1.YardimciTel,
                                 Köyİhtiyac = d1.KoyDetay,
+                                GüzergahSırası = d1.Güzergah,
+                                KonumKoordinat = d1.Konum,
 
                             };
-                bunifuCustomDataGrid1.DataSource = query.ToList();
+
+                data3.DataSource = query.ToList();
+                data3.Columns[0].Visible = false;
             }
+
+        }
+
+    
+        private void txtKoyAra_TextChanged(object sender, EventArgs e)
+        {
+            koyara(bunifuCustomDataGrid1);
 
         }
 
@@ -377,6 +445,37 @@ namespace FethlerV2
                 cmbBolgeAd.SelectedItem = null;
 
             }
+        }
+        int hoveredRowIndex = -1;
+        private void bunifuCustomDataGrid1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex != hoveredRowIndex)
+            {
+                if (hoveredRowIndex >= 0 && hoveredRowIndex < bunifuCustomDataGrid1.Rows.Count)
+                {
+                    // Önceki hover satırını eski haline döndür
+                    bunifuCustomDataGrid1.Rows[hoveredRowIndex].DefaultCellStyle.BackColor = Color.FromArgb(120, 120, 150);
+                }
+
+                // Yeni hover satırı
+                bunifuCustomDataGrid1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(254, 110, 49);
+                hoveredRowIndex = e.RowIndex;
+            }
+
+        }
+
+        private void bunifuCustomDataGrid1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (hoveredRowIndex >= 0 && hoveredRowIndex < bunifuCustomDataGrid1.Rows.Count)
+            {
+                bunifuCustomDataGrid1.Rows[hoveredRowIndex].DefaultCellStyle.BackColor = Color.FromArgb(120, 120, 150);
+                hoveredRowIndex = -1;
+            }
+        }
+
+        private void bunifuCustomDataGrid1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+           
         }
     }
 }

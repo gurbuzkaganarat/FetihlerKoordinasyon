@@ -17,7 +17,7 @@ namespace FethlerV2
         public int KisiNo { get; set; }
         public string KisiAd { get; set; }
         public string KisiSoyAd { get; set; }
-        public Nullable<System.DateTime> DogumTarihi { get; set; }
+        public Nullable<int> DogumTarihi { get; set; }
         public string MedeniHal { get; set; }
         public string Cinsiyet { get; set; }
         public string EvDurumu { get; set; }
@@ -35,12 +35,12 @@ namespace FethlerV2
         public Nullable<int> Maas { get; set; }
         public string TcNo { get; set; }
         public Nullable<int> Referans { get; set; }
-        public string AileYakınları { get; set; }
+        public string Adres { get; set; }
     
         public virtual tbl_Hastaliklar tbl_Hastaliklar { get; set; }
         public virtual tbl_Kategoriler tbl_Kategoriler { get; set; }
-        public virtual tbl_Koyler tbl_Koyler { get; set; }
         public virtual tbl_Maaslar tbl_Maaslar { get; set; }
         public virtual tbl_Gorevliler tbl_Gorevliler { get; set; }
+        public virtual tbl_Koyler tbl_Koyler { get; set; }
     }
 }

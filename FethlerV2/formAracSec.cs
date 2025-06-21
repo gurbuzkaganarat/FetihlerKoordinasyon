@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace FethlerV2
 {
     public partial class formAracSec : Form
@@ -299,20 +300,35 @@ namespace FethlerV2
                 lblAracNo.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells[1].Value?.ToString();
                 int aracNo = Convert.ToInt32(lblAracNo.Text);
                 var g = db.tbl_Araclar.Find(aracNo);
-                g.Seç = true;
-                db.SaveChanges();
-                
-                List1(bunifuCustomDataGrid1);
-                List2(bunifuCustomDataGrid2);
-                toplamArac();
-                secilenArac();
-            }
-            catch 
-            {
+                var aracad = g.AracAdi;
 
-                
+                DialogResult result = MessageBox.Show(
+                    $"'{aracad}' adlı aracı dağıtıma  eklemek istiyor musunuz?",
+                    "Onay Gerekli",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    g.Seç = true;
+                    db.SaveChanges();
+
+                    List1(bunifuCustomDataGrid1);
+                    List2(bunifuCustomDataGrid2);
+                    toplamArac();
+                    secilenArac();
+                }
+                else
+                {
+                    // İptal edildi, hiçbir işlem yapılmaz
+                }
             }
-          
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
+            }
+
 
 
 
@@ -326,18 +342,33 @@ namespace FethlerV2
                 lblAracNo.Text = bunifuCustomDataGrid2.Rows[e.RowIndex].Cells[1].Value?.ToString();
                 int aracNo = Convert.ToInt32(lblAracNo.Text);
                 var g = db.tbl_Araclar.Find(aracNo);
-                g.Seç = false;
-                db.SaveChanges();
-                
-                List1(bunifuCustomDataGrid1);
-                List2(bunifuCustomDataGrid2);
-                toplamArac();
-                secilenArac();
+                var aracad = g.AracAdi;
+
+                DialogResult result = MessageBox.Show(
+                    $"'{aracad}' adlı aracı dağıtımdan çıkarmak  istiyor musunuz?",
+                    "Onay Gerekli",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    g.Seç = false;
+                    db.SaveChanges();
+
+                    List1(bunifuCustomDataGrid1);
+                    List2(bunifuCustomDataGrid2);
+                    toplamArac();
+                    secilenArac();
+                }
+                else
+                {
+                    // İptal edildi, hiçbir işlem yapılmaz
+                }
             }
-            catch
+            catch (Exception ex)
             {
-
-
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
             }
         }
 

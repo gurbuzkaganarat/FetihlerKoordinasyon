@@ -19,6 +19,7 @@ namespace FethlerV2
         {
             this.tbl_Araclar = new HashSet<tbl_Araclar>();
             this.tbl_Kisiler = new HashSet<tbl_Kisiler>();
+            this.tbl_SeferGorev = new HashSet<tbl_SeferGorev>();
         }
     
         public int GorevliNo { get; set; }
@@ -28,10 +29,16 @@ namespace FethlerV2
         public string GorevliTel { get; set; }
         public Nullable<bool> Aktiflik { get; set; }
         public Nullable<bool> Seç { get; set; }
+        public Nullable<bool> Gorevlendir { get; set; }
+        public string it { get; set; }
+        public string KurbanGörevi { get; set; }
+        public Nullable<bool> Gizle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Araclar> tbl_Araclar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Kisiler> tbl_Kisiler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_SeferGorev> tbl_SeferGorev { get; set; }
     }
 }

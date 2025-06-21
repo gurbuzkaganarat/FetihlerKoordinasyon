@@ -17,6 +17,7 @@ namespace FethlerV2
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_Bolgeler()
         {
+            this.tbl_SeferGorev = new HashSet<tbl_SeferGorev>();
             this.tbl_Koyler = new HashSet<tbl_Koyler>();
         }
     
@@ -26,7 +27,13 @@ namespace FethlerV2
         public Nullable<bool> Aktiflik { get; set; }
         public string BolgeSorumlusu { get; set; }
         public string BolgeYardımcısı { get; set; }
+        public string d1 { get; set; }
+        public string d2 { get; set; }
+        public string d3 { get; set; }
+        public string BolgeBilgiIslemci { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_SeferGorev> tbl_SeferGorev { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Koyler> tbl_Koyler { get; set; }
     }

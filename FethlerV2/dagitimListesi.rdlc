@@ -47,7 +47,7 @@
         </Field>
         <Field Name="DogumTarihi">
           <DataField>DogumTarihi</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="BolgeAdi">
           <DataField>BolgeAdi</DataField>
@@ -89,6 +89,30 @@
           <DataField>HastalikAdi</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Aktiflik">
+          <DataField>Aktiflik</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Expr1">
+          <DataField>Expr1</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Expr3">
+          <DataField>Expr3</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Bolge">
+          <DataField>Bolge</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Kategori">
+          <DataField>Kategori</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Sec">
+          <DataField>Sec</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
@@ -108,12 +132,12 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>20.58269cm</Width>
+                  <Width>20.26519cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>12.83257cm</Height>
+                  <Height>7.41744cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -243,18 +267,138 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>7.19746cm</Width>
+                                    <Width>6.99461cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>6.14299cm</Width>
+                                    <Width>5.94014cm</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>6.8715cm</Width>
+                                    <Width>6.66865cm</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
                                   <TablixRow>
-                                    <Height>0.57354cm</Height>
+                                    <Height>0.66174cm</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox22">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontWeight>Bold</FontWeight>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox22</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BottomBorder>
+                                                <Color>Black</Color>
+                                              </BottomBorder>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox33">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!KoyAdi.Value + " DEVAMI"</Value>
+                                                    <Style>
+                                                      <FontWeight>Bold</FontWeight>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox33</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BottomBorder>
+                                                <Color>Black</Color>
+                                              </BottomBorder>
+                                              <RightBorder>
+                                                <Color>Black</Color>
+                                              </RightBorder>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                          <rd:Selected>true</rd:Selected>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox34">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontWeight>Bold</FontWeight>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox34</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <BottomBorder>
+                                                <Color>Black</Color>
+                                              </BottomBorder>
+                                              <RightBorder>
+                                                <Color>Black</Color>
+                                              </RightBorder>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.63528cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -277,6 +421,7 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox85</rd:DefaultName>
+                                            <RepeatWith>Tablix12</RepeatWith>
                                             <Style>
                                               <Border>
                                                 <Style>Solid</Style>
@@ -313,6 +458,7 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox89</rd:DefaultName>
+                                            <RepeatWith>Tablix12</RepeatWith>
                                             <Style>
                                               <Border>
                                                 <Style>Solid</Style>
@@ -352,6 +498,7 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox13</rd:DefaultName>
+                                            <RepeatWith>Tablix12</RepeatWith>
                                             <Style>
                                               <Border>
                                                 <Style>Solid</Style>
@@ -373,7 +520,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>1.94937cm</Height>
+                                    <Height>2.01111cm</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -396,7 +543,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>="Yaş          : " &amp; IIf(round(DateDiff(“m”,Fields!DogumTarihi.Value,Now() )/12) &gt;= 100,"" ,round(DateDiff(“m”,Fields!DogumTarihi.Value,Now() )/12))</Value>
+                                                    <Value>="Yaş          : " &amp; IIf(Fields!DogumTarihi.Value &lt;= Year(Globals!ExecutionTime), Year(Globals!ExecutionTime) - Fields!DogumTarihi.Value, 0)</Value>
                                                     <Style>
                                                       <FontFamily>times New Roman</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -499,13 +646,12 @@
                                       <TablixCell>
                                         <CellContents>
                                           <Textbox Name="Textbox14">
-                                            <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!EkBilgi.Value</Value>
+                                                    <Value>=IIf(Len(Fields!EkBilgi.Value) &gt; 255, Left(Fields!EkBilgi.Value, 255), Fields!EkBilgi.Value)</Value>
                                                     <Style>
                                                       <FontFamily>times New Roman</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -555,6 +701,11 @@
                                 <TablixMembers>
                                   <TablixMember>
                                     <KeepWithGroup>After</KeepWithGroup>
+                                    <RepeatOnNewPage>true</RepeatOnNewPage>
+                                  </TablixMember>
+                                  <TablixMember>
+                                    <KeepWithGroup>After</KeepWithGroup>
+                                    <RepeatOnNewPage>true</RepeatOnNewPage>
                                   </TablixMember>
                                   <TablixMember>
                                     <Group Name="Details1" />
@@ -565,10 +716,10 @@
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <DataSetName>DataSet1</DataSetName>
-                              <Top>3.53851cm</Top>
+                              <Top>3.39743cm</Top>
                               <Left>0.37073cm</Left>
-                              <Height>2.52291cm</Height>
-                              <Width>20.21195cm</Width>
+                              <Height>3.30813cm</Height>
+                              <Width>19.6034cm</Width>
                               <ZIndex>4</ZIndex>
                               <Style>
                                 <Border>
@@ -1013,9 +1164,9 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>0.25601cm</Top>
-                              <Left>12.73808cm</Left>
+                              <Left>13.08204cm</Left>
                               <Height>0.47653cm</Height>
-                              <Width>7.8446cm</Width>
+                              <Width>7.15668cm</Width>
                               <ZIndex>19</ZIndex>
                               <Style>
                                 <Border>
@@ -1042,9 +1193,9 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>1.24435cm</Top>
-                              <Left>12.73808cm</Left>
+                              <Left>13.08204cm</Left>
                               <Height>0.47653cm</Height>
-                              <Width>7.8446cm</Width>
+                              <Width>7.15668cm</Width>
                               <ZIndex>20</ZIndex>
                               <Style>
                                 <Border>
@@ -1072,7 +1223,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox12</rd:DefaultName>
                               <Top>0.29128cm</Top>
-                              <Left>12.4609cm</Left>
+                              <Left>12.80486cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>0.27719cm</Width>
                               <ZIndex>21</ZIndex>
@@ -1102,7 +1253,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox12</rd:DefaultName>
                               <Top>0.80309cm</Top>
-                              <Left>12.4609cm</Left>
+                              <Left>12.80486cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>0.27719cm</Width>
                               <ZIndex>22</ZIndex>
@@ -1132,7 +1283,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox12</rd:DefaultName>
                               <Top>1.27962cm</Top>
-                              <Left>12.46089cm</Left>
+                              <Left>12.80485cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>0.27719cm</Width>
                               <ZIndex>23</ZIndex>
@@ -1162,7 +1313,7 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>0.25602cm</Top>
-                              <Left>9.27724cm</Left>
+                              <Left>9.6212cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>3.18365cm</Width>
                               <ZIndex>24</ZIndex>
@@ -1192,7 +1343,7 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>0.8031cm</Top>
-                              <Left>9.27724cm</Left>
+                              <Left>9.6212cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>3.18365cm</Width>
                               <ZIndex>25</ZIndex>
@@ -1222,7 +1373,7 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>1.27963cm</Top>
-                              <Left>9.27723cm</Left>
+                              <Left>9.62119cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>3.18366cm</Width>
                               <ZIndex>26</ZIndex>
@@ -1251,9 +1402,9 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>0.76782cm</Top>
-                              <Left>12.73808cm</Left>
+                              <Left>13.08204cm</Left>
                               <Height>0.47653cm</Height>
-                              <Width>7.8446cm</Width>
+                              <Width>7.15668cm</Width>
                               <ZIndex>27</ZIndex>
                               <Style>
                                 <Border>
@@ -1281,7 +1432,7 @@
                               </Paragraphs>
                               <rd:DefaultName>Textbox12</rd:DefaultName>
                               <Top>1.93254cm</Top>
-                              <Left>12.46089cm</Left>
+                              <Left>12.80485cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>0.27719cm</Width>
                               <ZIndex>28</ZIndex>
@@ -1311,7 +1462,7 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>1.93255cm</Top>
-                              <Left>9.27723cm</Left>
+                              <Left>9.62119cm</Left>
                               <Height>0.47653cm</Height>
                               <Width>3.18366cm</Width>
                               <ZIndex>29</ZIndex>
@@ -1340,9 +1491,9 @@
                               </Paragraphs>
                               <rd:DefaultName>BolgeAdi</rd:DefaultName>
                               <Top>1.93255cm</Top>
-                              <Left>12.73808cm</Left>
+                              <Left>13.08204cm</Left>
                               <Height>0.47653cm</Height>
-                              <Width>7.8446cm</Width>
+                              <Width>7.15668cm</Width>
                               <ZIndex>30</ZIndex>
                               <Style>
                                 <Border>
@@ -1351,11 +1502,6 @@
                               </Style>
                             </Textbox>
                           </ReportItems>
-                          <PageBreak>
-                            <BreakLocation>End</BreakLocation>
-                            <ResetPageNumber>true</ResetPageNumber>
-                          </PageBreak>
-                          <KeepTogether>true</KeepTogether>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1381,15 +1527,18 @@
                       <GroupExpression>=Fields!KoyNo.Value</GroupExpression>
                       <GroupExpression>=Fields!BolgeNo.Value</GroupExpression>
                     </GroupExpressions>
+                    <PageBreak>
+                      <BreakLocation>End</BreakLocation>
+                    </PageBreak>
                   </Group>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.41452cm</Top>
-            <Left>0.00001cm</Left>
-            <Height>12.83257cm</Height>
-            <Width>20.58269cm</Width>
+            <Top>0.11436cm</Top>
+            <Left>0.00011cm</Left>
+            <Height>7.41744cm</Height>
+            <Width>20.26519cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1397,13 +1546,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>5.21539in</Height>
+        <Height>2.96528in</Height>
         <Style />
       </Body>
-      <Width>8.10343in</Width>
+      <Width>8.00971in</Width>
       <Page>
         <PageHeader>
-          <Height>1.97321cm</Height>
+          <Height>2cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1501,9 +1650,8 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>2.54cm</Height>
+          <Height>0.5cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
           <Style>
             <Border>
               <Style>None</Style>
